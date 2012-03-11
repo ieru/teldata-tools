@@ -1,0 +1,328 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.uah.main.dokeos;
+
+
+import com.uah.commons.DataBaseConnectionParameters;
+import com.uah.commons.DataBaseManagement;
+import com.uah.converters.DokeosConverter;
+import com.uah.dao.dokeos.*;
+import com.uah.dto.dokeos.*;
+import com.uah.exceptions.ConnectionParametersException;
+import com.uah.graph.MavselGraphManager;
+import com.uah.graph.MavselVertex;
+import com.uah.items.*;
+import edu.uci.ics.jung.graph.Graph;
+import java.util.ArrayList;
+import java.util.List;
+
+
+/**
+ *
+ * @author Pablo
+ */
+public class DokeosLMS extends DataBaseManagement implements LMS{
+ 
+    
+    /**************************************************************************
+    *                              ATTRIBUTES
+    **************************************************************************/
+    private DokeosConverter converter;
+    
+    
+        
+    
+    /**************************************************************************
+    *                              PUBLIC METHODS
+    ***************************************************************************/
+    
+    /**
+     * Constructor
+     */
+    public DokeosLMS(){      
+        this.converter = new DokeosConverter();
+    }
+        
+    
+    /**
+     * Constructor
+     * @param dataBaseURL
+     * @param dataBasePort
+     * @param dataBaseName
+     * @param dataBaseUser
+     * @param dataBaseUserPass 
+     */
+    public DokeosLMS(String dataBaseURL, String dataBasePort, 
+            String dataBaseName, String dataBaseUser, String dataBaseUserPass){
+        try{
+            // Database parameters
+            DataBaseConnectionParameters dbConnectionParams = new DataBaseConnectionParameters(dataBaseURL, dataBasePort, 
+                    dataBaseName, dataBaseUser, dataBaseUserPass);
+            // Checking database`s parameters
+            dbConnectionParams.checkParams();
+            
+            // Configuring database and initializing connection
+            initDataBaseConnection(dbConnectionParams);
+            
+            this.converter = new DokeosConverter();
+                                   
+        }catch( Exception e ) {
+            e.printStackTrace();
+        }          
+    }
+        
+    
+    
+    /**
+     * 
+     * @param dataBaseURL
+     * @param dataBasePort
+     * @param dataBaseName
+     * @param dataBaseUser
+     * @param dataBaseUserPass
+     * @throws ConnectionParametersException 
+     */
+    @Override
+    public void configureLMS(String dataBaseURL, String dataBasePort, 
+        String dataBaseName, String dataBaseUser, String dataBaseUserPass) throws ConnectionParametersException{
+
+        // Saving database`s parameters
+        DataBaseConnectionParameters dbConnectionParams = new DataBaseConnectionParameters(dataBaseURL, dataBasePort, 
+                dataBaseName, dataBaseUser, dataBaseUserPass);
+
+        // Checking database`s parameters
+        dbConnectionParams.checkParams();
+
+        // Configuring database and initializing connection
+        initDataBaseConnection(dbConnectionParams);                                   
+                
+    }
+    
+    
+    
+    /**
+     * 
+     * @param id
+     * @return 
+     */
+    @Override
+    public Course getCourse(String id){
+        Course course;
+        CourseDokeosDAO courseDAO = new CourseDokeosDAO(connection);
+        CourseDokeosDTO courseDTO = courseDAO.selectCourse(id);
+
+        course = converter.getDokeoseCourseItemFromCourseDTO(courseDTO);
+        
+        return course;       
+    }
+ 
+   
+    /**
+     * 
+     * @return 
+     */
+    @Override
+    public List<Forum> getForums(){
+        
+        CourseDokeosDAO courseDAO = new CourseDokeosDAO(connection);
+        ForumDokeosDAO forumDAO = new ForumDokeosDAO(connection);
+        
+        List<CourseDokeosDTO> listeCourseDTO = courseDAO.selectCourses();        
+        List<ForumDokeosDTO> forumsDTO = new ArrayList();
+        List<ForumDokeosDTO> forumsDTOTemp;
+        List<Forum> forums;
+        
+        for(CourseDokeosDTO courseDTO: listeCourseDTO){            
+            forumsDTOTemp = forumDAO.selectForums(courseDTO.getDb_name());
+            forumsDTO.addAll(forumsDTOTemp);
+        }
+        
+
+       forums = converter.getDokeosForumsItemFromForumsDTO(forumsDTO);
+       
+       return forums;      
+   }
+    
+    
+     
+    /**
+     * 
+     * @param course
+     * @return 
+     */
+    @Override
+   public List<Forum> getForums(Course course){
+                
+        List<ForumDokeosDTO> forumsDTO;
+        List<Forum> forums;
+        ForumDokeosDAO forumDAO = new ForumDokeosDAO(connection);
+        forumsDTO = forumDAO.selectForums(course.getConfigExtraData());
+
+        forums = converter.getDokeosForumsItemFromForumsDTO(forumsDTO);
+       
+       return forums;       
+   }
+   
+
+    /**
+     * 
+     * @return 
+     */
+    @Override
+    public List<Discussion> getDiscussions( ){      
+       CourseDokeosDAO courseDAO = new CourseDokeosDAO(connection);
+       DiscussionDokeosDAO discussionDAO = new DiscussionDokeosDAO(connection);
+       
+       List<CourseDokeosDTO> listeCourseDTO = courseDAO.selectCourses();        
+       List<DiscussionDokeosDTO> discussionsDTO = new ArrayList();
+       List<DiscussionDokeosDTO> discussionsDTOTemp;
+       List<Discussion> discussions;
+        
+       
+        for(CourseDokeosDTO courseDTO: listeCourseDTO){      
+            discussionsDTOTemp = discussionDAO.selectDiscussions(courseDTO.getDb_name());
+            discussionsDTO.addAll(discussionsDTOTemp);
+        }
+
+       discussions = converter.getDokeosDiscussionsItemFromDiscussionsDTO(discussionsDTO);
+       
+       return discussions;       
+   }  
+    
+    
+    /**
+     * 
+     * @param forum
+     * @return 
+     */
+    @Override
+    public List<Discussion> getDiscussions(Forum forum){
+       DiscussionDokeosDAO discussionDAO = new DiscussionDokeosDAO(connection);
+       
+       List<DiscussionDokeosDTO> discussionsDTO;
+       List<Discussion> discussions;
+                     
+        discussionsDTO = discussionDAO.selectDiscussions(forum.getConfigExtraData(), forum.getId());
+  
+
+       discussions = converter.getDokeosDiscussionsItemFromDiscussionsDTO(discussionsDTO);
+       
+       return discussions;      
+   }
+    
+      
+    /**
+     * 
+     * @return 
+     */
+    @Override
+    public List<Post> getPosts(){
+        CourseDokeosDAO courseDAO = new CourseDokeosDAO(connection);
+        PostDokeosDAO postDAO = new PostDokeosDAO(connection);
+       
+        List<CourseDokeosDTO> listeCourseDTO = courseDAO.selectCourses(); 
+        List<PostDokeosDTO> postsDTOTemp;
+        List<PostDokeosDTO> postsDTO = new ArrayList();
+        List<Post> posts;
+
+       
+       for(CourseDokeosDTO courseDTO: listeCourseDTO){     
+            postsDTOTemp = postDAO.selectPosts(courseDTO.getDb_name());
+            postsDTO.addAll(postsDTOTemp);
+       }
+      
+       posts = converter.getDokeosPostsItemFromPostsDTO(postsDTO);
+       
+       return posts;     
+             
+   }
+    
+     
+    /**
+     * 
+     * @param discussion
+     * @return 
+     */
+    @Override
+    public List<Post> getPosts(Discussion discussion){
+        PostDokeosDAO postDAO = new PostDokeosDAO(connection);
+       
+       
+        List<PostDokeosDTO> postsDTOTemp;
+        List<PostDokeosDTO> postsDTO = new ArrayList();
+        List<Post> posts;
+     
+        postsDTOTemp = postDAO.selectPosts(discussion.getConfigExtraData(), discussion.getId());
+        postsDTO.addAll(postsDTOTemp);
+
+
+       posts = converter.getDokeosPostsItemFromPostsDTO(postsDTO);
+       
+       return posts;      
+   }
+    
+    
+    
+    /**
+     * 
+     * @return 
+     */
+    @Override
+    public List<Participant> getParticipants(){
+       List<ParticipantDokeosDTO> participantsDTO;
+       List<Participant> participants;
+       ParticipantDokeosDAO participantDAO = new ParticipantDokeosDAO(connection);
+       participantsDTO = participantDAO.selectParticipants();
+
+       participants = converter.getDokeosParticipantsItemFromParticipantsDTO(participantsDTO);
+       
+       return participants;       
+   }   
+    
+    
+    /**
+     * 
+     * @param idParticipant
+     * @return 
+     */
+    @Override
+    public Participant getParticipant(String idParticipant){
+       ParticipantDokeosDTO participantDTO;
+       Participant participant;
+       ParticipantDokeosDAO participantDAO = new ParticipantDokeosDAO(connection);
+       participantDTO = participantDAO.selectParticipant(idParticipant);
+
+       participant = converter.getDokeosParticipantItemFromParticipantDTO(participantDTO);
+
+       return participant;
+   }    
+   
+    
+    /**
+     * 
+     * @param course
+     * @return 
+     */
+    @Override
+    public Graph<MavselVertex, String> getParticipantForumGraph(Course course){
+        MavselGraphManager gManager = new MavselGraphManager();
+
+        return gManager.getParticipantForumGraph(course, this);
+    }
+
+    
+    
+    /**
+     * 
+     * @param forums
+     * @return 
+     */
+    @Override
+    public Graph<MavselVertex, String> getParticipantForumGraph(List<Forum>forums){
+        MavselGraphManager gManager = new MavselGraphManager();
+
+        return gManager.getParticipantForumGraph(forums, this);
+    }
+}
