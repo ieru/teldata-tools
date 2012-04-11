@@ -25,7 +25,7 @@ public class PostMoodleDAO  extends DAO{
         List<PostMoodleDTO> posts = new ArrayList<PostMoodleDTO>();
         
         try {
-            String sqlOrder = "SELECT id, discussion, parent, userid, subject, message FROM moodle.mdl_forum_posts WHERE discussion ='"+idThread+"'";            
+            String sqlOrder = "SELECT id, discussion, parent, userid, subject, message FROM mdl_forum_posts WHERE discussion ='"+idThread+"'";            
             statement = connection.createStatement();
             rs = statement.executeQuery( sqlOrder );
             
@@ -53,7 +53,7 @@ public class PostMoodleDAO  extends DAO{
         List<PostMoodleDTO> posts = new ArrayList<PostMoodleDTO>();
         
         try {
-            String sqlOrder = "SELECT id, discussion, parent, userid, subject, message FROM moodle.mdl_forum_posts";            
+            String sqlOrder = "SELECT id, discussion, parent, userid, subject, message FROM mdl_forum_posts";            
             statement = connection.createStatement();
             rs = statement.executeQuery( sqlOrder );
             

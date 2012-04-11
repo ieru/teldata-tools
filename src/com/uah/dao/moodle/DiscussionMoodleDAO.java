@@ -26,7 +26,7 @@ public class DiscussionMoodleDAO  extends DAO {
         List<DiscussionMoodleDTO> threads = new ArrayList<DiscussionMoodleDTO>();
         
         try {
-            String sqlOrder = "SELECT id,course,forum,name,userid,groupid FROM moodle.mdl_forum_discussions WHERE forum ='"+idForum+"'";            
+            String sqlOrder = "SELECT id,course,forum,name,userid,groupid FROM mdl_forum_discussions WHERE forum ='"+idForum+"'";            
             statement = connection.createStatement();
             rs = statement.executeQuery( sqlOrder );
             
@@ -56,7 +56,7 @@ public class DiscussionMoodleDAO  extends DAO {
         List<DiscussionMoodleDTO> threads = new ArrayList<DiscussionMoodleDTO>();
         
         try {
-            String sqlOrder = "SELECT id,course,forum,name,userid,groupid FROM moodle.mdl_forum_discussions";            
+            String sqlOrder = "SELECT id,course,forum,name,userid,groupid FROM mdl_forum_discussions";            
             statement = connection.createStatement();
             rs = statement.executeQuery( sqlOrder );
             

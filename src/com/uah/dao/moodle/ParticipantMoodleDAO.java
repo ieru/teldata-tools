@@ -25,7 +25,7 @@ public class ParticipantMoodleDAO extends DAO{
         ParticipantMoodleDTO participant = new ParticipantMoodleDTO();
                
         try {
-            String sqlOrder = "SELECT id, username, firstname, lastname, email, address, city,country, lang FROM moodle.mdl_user  WHERE id ='"+idParticipant+"'";            
+            String sqlOrder = "SELECT id, username, firstname, lastname, email, address, city,country, lang FROM mdl_user  WHERE id ='"+idParticipant+"'";            
             statement = connection.createStatement();
             rs = statement.executeQuery( sqlOrder );
             
@@ -57,7 +57,7 @@ public class ParticipantMoodleDAO extends DAO{
         List<ParticipantMoodleDTO> participants = new ArrayList<ParticipantMoodleDTO>();
         
         try {
-            String sqlOrder = "SELECT id, username, firstname, lastname, email, address, city,country, lang FROM moodle.mdl_user";            
+            String sqlOrder = "SELECT id, username, firstname, lastname, email, address, city,country, lang FROM mdl_user";            
             statement = connection.createStatement();
             rs = statement.executeQuery( sqlOrder );
             
