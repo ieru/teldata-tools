@@ -165,4 +165,47 @@ public class MoodleConverter {
 
         return participantItem;
    }
+   
+   
+   /**
+    * 
+    * @param listPostRatingDTO
+    * @return 
+    */
+   public List<PostRating> getMoodlePostRatingsFromPostRatingsDTO(List<PostRatingMoodleDTO> listPostRatingDTO){
+        PostRating postRatingItem;          
+        List<PostRating> postRatingsItems = new ArrayList<PostRating>();
+
+        for(PostRatingMoodleDTO dto : listPostRatingDTO){ 
+            postRatingItem = getMoodlePostRatingFromPostRatingDTO(dto);
+                        
+            postRatingsItems.add(postRatingItem); 
+        }
+       
+        return postRatingsItems;
+   }
+   
+   
+   /**
+    * 
+    * @param postRatingDTO
+    * @return 
+    */
+   public PostRating getMoodlePostRatingFromPostRatingDTO(PostRatingMoodleDTO postRatingDTO){
+        PostRating postRatingItem;    
+        
+        postRatingItem = new PostRating();
+        
+        postRatingItem.setCourseid(postRatingDTO.getCourseid());
+        postRatingItem.setForumid(postRatingDTO.getForumid());   
+        postRatingItem.setForumname(postRatingDTO.getForumName());
+        postRatingItem.setPostid(postRatingDTO.getPostid());
+        postRatingItem.setRating(postRatingDTO.getRating());
+        postRatingItem.setRoleid(postRatingDTO.getRoleid());
+        postRatingItem.setRolename(postRatingDTO.getRolename());
+        postRatingItem.setScaleid(postRatingDTO.getScaleid());
+        postRatingItem.setUserid(postRatingDTO.getUserid());
+        
+        return postRatingItem;
+   }
 }
