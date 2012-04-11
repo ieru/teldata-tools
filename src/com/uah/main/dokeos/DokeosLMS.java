@@ -7,10 +7,14 @@ package com.uah.main.dokeos;
 
 import com.uah.commons.DataBaseConnectionParameters;
 import com.uah.commons.DataBaseManagement;
+import com.uah.commons.FileRProcessor;
 import com.uah.converters.DokeosConverter;
 import com.uah.dao.dokeos.*;
+import com.uah.dao.moodle.PostRatingMoodleDAO;
 import com.uah.dto.dokeos.*;
+import com.uah.dto.modle.PostRatingMoodleDTO;
 import com.uah.exceptions.ConnectionParametersException;
+import com.uah.exceptions.OperationNotSupportedException;
 import com.uah.graph.MavselGraphManager;
 import com.uah.graph.MavselVertex;
 import com.uah.items.*;
@@ -324,5 +328,13 @@ public class DokeosLMS extends DataBaseManagement implements LMS{
         MavselGraphManager gManager = new MavselGraphManager();
 
         return gManager.getParticipantForumGraph(forums, this);
+    }
+    
+    
+    @Override
+    public void getForumRaitingInRFile(String filename) throws OperationNotSupportedException{
+        //aqui lanzar la excepcion
+        throw new OperationNotSupportedException("DOKEOS does not support rating forums.");
+                    
     }
 }

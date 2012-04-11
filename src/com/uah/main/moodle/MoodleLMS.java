@@ -10,10 +10,12 @@ package com.uah.main.moodle;
 
 import com.uah.commons.DataBaseConnectionParameters;
 import com.uah.commons.DataBaseManagement;
+import com.uah.commons.FileRProcessor;
 import com.uah.converters.MoodleConverter;
 import com.uah.dao.moodle.*;
 import com.uah.dto.modle.*;
 import com.uah.exceptions.ConnectionParametersException;
+import com.uah.exceptions.OperationNotSupportedException;
 import com.uah.graph.MavselGraphManager;
 import com.uah.graph.MavselVertex;
 import com.uah.items.*;
@@ -271,6 +273,25 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
    }
 
 
+    /**
+     * 
+     * @return 
+     */
+    @Override
+    public void getForumRaitingInRFile(String filename)throws OperationNotSupportedException{
+        List <PostRatingMoodleDTO> ratingsDTO;
+        List <PostRating> ratingsItem;
+        PostRatingMoodleDAO dao = new PostRatingMoodleDAO(connection);
+        
+        ratingsDTO = dao.selectPostRating();
+        
+        ratingsItem = converter.getMoodlePostRatingsFromPostRatingsDTO(ratingsDTO);
+        
+        FileRProcessor fileRProcessor = new FileRProcessor();
+        fileRProcessor.printIntoFile(filename, ratingsItem);
+                    
+    }
+
 
     /**
      *
@@ -298,6 +319,7 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
     }
   
 
+    
     /*
     private MavselVertex searchVertex (MavselVertex vertex){
 
