@@ -27,13 +27,14 @@ public class FileRProcessor {
         fields = new ArrayList();
         fields.add("courseid");
         fields.add("forumid");
+        fields.add("forumname");
         fields.add("postid");
         fields.add("rating");
         fields.add("roleid");
         fields.add("rolename");
         fields.add("scaleid");
         fields.add("userid");
-        fields.add("forumname");
+        
     }
     
 
@@ -69,6 +70,14 @@ public class FileRProcessor {
                 printWrite.print(rating.getRolename() + "\t");
                 printWrite.print(rating.getScaleid() + "\t");
                 printWrite.print(rating.getUserid() + "\t");
+                
+                
+              
+     
+
+
+
+  
             }
 
 
