@@ -21,6 +21,7 @@ public class Post {
     private String message;
 
     private String configExtraData;
+    private String createdTime;
     
     public String getId() {
         return id;
@@ -77,6 +78,14 @@ public class Post {
     public void setConfigExtraData(String configExtraData) {
         this.configExtraData = configExtraData;
     }
+           
+    public String getCreatedTime() {
+        return createdTime;
+    }
+    
+    public void setCreatedTime(String createdTime) {
+        this.createdTime = createdTime;
+}
            
     
 }
