@@ -111,6 +111,7 @@ public class MoodleConverter {
             postItem.setIdParticipant(dto.getIdUser());
             postItem.setMessage(dto.getMessage());            
             postItem.setSubject(dto.getSubject());
+            postItem.setCreatedTime(dto.getCreated());
             
             discussions.add(postItem);                    
         }
