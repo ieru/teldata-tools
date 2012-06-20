@@ -17,6 +17,7 @@ public class PostMoodleDTO {
     
     private String subject;
     private String message;
+    private String created;
 
     public String getIdPost() {
         return idPost;
@@ -64,6 +65,14 @@ public class PostMoodleDTO {
 
     public void setSubject(String subject) {
         this.subject = subject;
+    }
+    
+    public String getCreated() {
+        return created;
+    }
+    
+    public void setCreated(String created) {
+        this.created = created;
     }
     
     
