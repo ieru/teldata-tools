@@ -104,16 +104,16 @@ public class SoniaAdapter {
                 System.out.println("Relation::"+relation);
                 
                 //FromId
-               // file.append();
+                file.append(extractForumId(relation));
                 file.append('\t');
                 
                 //ToId
-               // file.append();
+                file.append(extractParticipantId(relation));
                 file.append('\t');
                 
                 //StrartTime
-                //lo guardo en el mismo string de edge
-               // file.append();
+                //lo guardo en el mismo string de edge                
+                file.append(extractStratTime(relation));
                 file.append('\t');
                 
                 //EndTime
@@ -162,4 +162,26 @@ public class SoniaAdapter {
     private String SoNIAFile(){
         
     }*/
+    
+    private static String extractStratTime(String edgeDescription){
+        //MavselGraphManager.INIT_CREATEDTIME
+        int ini = edgeDescription.lastIndexOf(MavselGraphManager.INIT_CREATEDTIME); 
+        int fin = edgeDescription.lastIndexOf(MavselGraphManager.END_CREATEDTIME); 
+        
+        return edgeDescription.substring(ini, fin);
+    }
+    
+    private static String extractForumId(String edgeDescription){
+        int ini = edgeDescription.lastIndexOf(MavselVertex.FORUM_TOSTRING_INIT); 
+        int fin = edgeDescription.lastIndexOf(MavselVertex.END_TOSTRING); 
+        
+        return edgeDescription.substring(ini, fin);
+    }
+    
+    private static String extractParticipantId(String edgeDescription){
+        int ini = edgeDescription.lastIndexOf(MavselVertex.USER_TOSTRING_INIT); 
+        int fin = edgeDescription.lastIndexOf(MavselVertex.END_TOSTRING); 
+        
+        return edgeDescription.substring(ini, fin);
+    }
 }

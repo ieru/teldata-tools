@@ -14,6 +14,9 @@ public class MavselVertex {
     private boolean type;
     public static boolean IS_USER = true;
     public static boolean IS_FORUM = false;
+    public static String USER_TOSTRING_INIT = "Vertex-UserId[";
+    public static String FORUM_TOSTRING_INIT = "Vertex-ForumId[";
+    public static String END_TOSTRING = "] Description:: ";
 
     
     /**
@@ -35,9 +38,9 @@ public class MavselVertex {
     @Override
     public String toString() {
         if (type) {
-            return "User " + id + ": " + description;
+            return USER_TOSTRING_INIT + id + END_TOSTRING + description;
         } else {
-            return "Forum " + id + ": " + description;
+            return FORUM_TOSTRING_INIT + id + END_TOSTRING + description;
         }
     }
 

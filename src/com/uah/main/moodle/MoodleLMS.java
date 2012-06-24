@@ -20,6 +20,7 @@ import com.uah.graph.MavselGraphManager;
 import com.uah.graph.MavselVertex;
 import com.uah.items.*;
 import edu.uci.ics.jung.graph.Graph;
+import java.sql.Connection;
 import java.util.List;
 
 
@@ -80,7 +81,7 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
         }          
     }
         
-    
+
     
         
     /**************************************************************************
@@ -113,6 +114,17 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
                 
     }
     
+    /**
+     * 
+     * @param connection 
+     */
+    @Override
+    public void configureLMS(Connection connection){
+
+        // Configuring database and initializing connection
+            initDataBaseConnection(connection);
+                                            
+    }
        
     /**
      * 

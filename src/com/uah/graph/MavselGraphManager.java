@@ -15,6 +15,11 @@ import java.util.List;
  * @author Pablo
  */
 public class MavselGraphManager {
+    
+    public static final String INIT_CREATEDTIME = "|| CREATED TIME::[";
+    public static final String END_CREATEDTIME = "]::";
+    public static final String SEPARATOR = " ; ";
+       
    
     public MavselGraphManager(){
         
@@ -84,8 +89,8 @@ public class MavselGraphManager {
                     }
 
                     try{
-                        graph.addEdge(forumVertex.toString()+" - "+participantVertex.toString(), forumVertex, participantVertex, EdgeType.DIRECTED);
-                        System.out.println("NEW EDGE - "+forumVertex.toString()+" - "+participantVertex.toString());
+                        graph.addEdge( forumVertex.toString() + SEPARATOR + participantVertex.toString() + INIT_CREATEDTIME + post.getCreatedTime() + END_CREATEDTIME, forumVertex, participantVertex, EdgeType.DIRECTED);
+                        System.out.println("NEW EDGE - "+ forumVertex.toString() + participantVertex.toString() + INIT_CREATEDTIME + post.getCreatedTime() + END_CREATEDTIME);
                     }catch(java.lang.IllegalArgumentException e){
                         // The new edge alredy exists
                         System.out.println("EDGE ALREDY EXISTS - "+forumVertex.toString()+" - "+participantVertex.toString());

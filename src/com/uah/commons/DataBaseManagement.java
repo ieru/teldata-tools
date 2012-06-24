@@ -48,6 +48,26 @@ public class DataBaseManagement {
         
     
     /**
+     * 
+     * @param dbConnectionParams 
+     */
+    public void initDataBaseConnection(Connection dbConnection){
+        
+        try{               
+           
+            // Loading driver for mysql-connector-java-5.1.16-bin
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            // Connecting to database
+            this.connection = dbConnection;
+                                       
+            
+        }catch( Exception e ) {
+            e.printStackTrace();
+        }              
+    }
+    
+    /**
      * closeConnection
      */
     public void closeConnection(){
