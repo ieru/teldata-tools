@@ -26,7 +26,7 @@ public class PostDokeosDAO  extends DAO{
         List<PostDokeosDTO> posts = new ArrayList<PostDokeosDTO>();
         
         try {
-            String sqlOrder = "SELECT post_id, post_title, post_text, thread_id, forum_id, poster_id, post_parent_id FROM "+db_name+".forum_post WHERE thread_id ="+idThread;            
+            String sqlOrder = "SELECT post_id, post_title, post_text, thread_id, forum_id, poster_id, post_parent_id, post_date FROM "+db_name+".forum_post WHERE thread_id ="+idThread;            
             statement = connection.createStatement();
             rs = statement.executeQuery( sqlOrder );
             
@@ -40,6 +40,7 @@ public class PostDokeosDAO  extends DAO{
                 post.setPostText(rs.getString("post_text"));  
                 post.setTitle(rs.getString("post_title"));  
                 post.setDb_name(db_name);
+                post.setPost_date(rs.getString("post_date"));
                 
                 posts.add(post);                
             }               

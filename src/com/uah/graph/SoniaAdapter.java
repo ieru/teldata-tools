@@ -91,6 +91,8 @@ public class SoniaAdapter {
             
             Collection<String> edges = graph.getEdges();  
             
+            System.out.println("edges::"+edges.size());
+            
             //Header -> relations columns
             file.append("\n");
             file.append(columsFrom[0]);
@@ -99,9 +101,11 @@ public class SoniaAdapter {
                 file.append(columsFrom[i]);                                             
             }
             
+            
+            
             for(String relation: edges){
                 file.append('\n');
-                System.out.println("Relation::"+relation);
+                //System.out.println("Relation::"+relation);
                 
                 //FromId
                 file.append(extractForumId(relation));
@@ -163,25 +167,24 @@ public class SoniaAdapter {
         
     }*/
     
-    private static String extractStratTime(String edgeDescription){
-        //MavselGraphManager.INIT_CREATEDTIME
-        int ini = edgeDescription.lastIndexOf(MavselGraphManager.INIT_CREATEDTIME); 
-        int fin = edgeDescription.lastIndexOf(MavselGraphManager.END_CREATEDTIME); 
+    private static String extractStratTime(String edgeDescription){   
+        int ini = edgeDescription.indexOf(MavselGraphManager.INIT_CREATEDTIME)+MavselGraphManager.INIT_CREATEDTIME.length(); 
+        int fin = edgeDescription.indexOf(MavselGraphManager.END_CREATEDTIME); 
         
         return edgeDescription.substring(ini, fin);
     }
     
     private static String extractForumId(String edgeDescription){
-        int ini = edgeDescription.lastIndexOf(MavselVertex.FORUM_TOSTRING_INIT); 
-        int fin = edgeDescription.lastIndexOf(MavselVertex.END_TOSTRING); 
+        int ini = edgeDescription.indexOf(MavselVertex.FORUM_TOSTRING_INIT)+MavselVertex.FORUM_TOSTRING_INIT.length(); 
+        int fin = edgeDescription.indexOf(MavselVertex.FORUM_LABEL); 
         
         return edgeDescription.substring(ini, fin);
     }
     
-    private static String extractParticipantId(String edgeDescription){
-        int ini = edgeDescription.lastIndexOf(MavselVertex.USER_TOSTRING_INIT); 
-        int fin = edgeDescription.lastIndexOf(MavselVertex.END_TOSTRING); 
-        
+    private static String extractParticipantId(String edgeDescription){        
+        int ini = edgeDescription.indexOf(MavselVertex.USER_TOSTRING_INIT)+MavselVertex.USER_TOSTRING_INIT.length(); 
+        int fin = edgeDescription.indexOf(MavselVertex.USER_LABEL); 
+
         return edgeDescription.substring(ini, fin);
     }
 }

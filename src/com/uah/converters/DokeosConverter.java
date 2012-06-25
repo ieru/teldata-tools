@@ -119,6 +119,8 @@ public class DokeosConverter {
             postItem.setIdParticipant(dto.getIdUser());
             postItem.setMessage(dto.getPostText());            
             postItem.setSubject(dto.getTitle());
+            postItem.setCreatedTime(dto.getPost_date());
+            
             
             discussions.add(postItem);                    
         }

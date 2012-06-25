@@ -18,6 +18,7 @@ public class PostDokeosDTO {
     private String postText;
     
     private String db_name;
+    private String post_date;
 
     public String getId() {
         return id;
@@ -74,6 +75,16 @@ public class PostDokeosDTO {
     public void setDb_name(String db_name) {
         this.db_name = db_name;
     }
+
+    public String getPost_date() {
+        return post_date;
+    }
+
+    public void setPost_date(String post_date) {
+        this.post_date = post_date;
+    }
+
+
    
     
 }
