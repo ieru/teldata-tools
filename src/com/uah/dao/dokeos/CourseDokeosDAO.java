@@ -7,6 +7,7 @@ package com.uah.dao.dokeos;
 
 import com.uah.dao.DAO;
 import com.uah.dto.dokeos.CourseDokeosDTO;
+import com.uah.dto.modle.CourseMoodleDTO;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +57,35 @@ public class CourseDokeosDAO extends DAO{
     }
     
     
+    /**
+     * 
+     * @param idCourse
+     * @return 
+     */
+    public List<CourseDokeosDTO>  selectCourse(){
+        CourseDokeosDTO course = new CourseDokeosDTO();
+         List<CourseDokeosDTO> courses = new ArrayList<CourseDokeosDTO>();
+        try {
+            String sqlOrder = "SELECT code, db_name, title, description, course_language, db_name FROM dokeos_main.course";            
+            statement = connection.createStatement();
+            rs = statement.executeQuery( sqlOrder );
+
+             while(rs.next()){           
+                course.setCode(rs.getString("code"));
+                course.setDb_name(rs.getString("db_name"));
+                course.setTitle(rs.getString("title"));
+                course.setDescription(rs.getString("description")); 
+                
+                courses.add(course);
+            }   
+             
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        
+        return courses;
+    }
+    
     public List<CourseDokeosDTO>selectCourses(){
         List<CourseDokeosDTO> courses = new ArrayList();
         CourseDokeosDTO course;
@@ -65,18 +95,15 @@ public class CourseDokeosDAO extends DAO{
             statement = connection.createStatement();
             rs = statement.executeQuery( sqlOrder );
 
-            if(rs.next()){    
+            while(rs.next()){    
                 course = new CourseDokeosDTO();
                 course.setCode(rs.getString("code"));
                 course.setDb_name(rs.getString("db_name"));
                 course.setTitle(rs.getString("title"));
                 course.setDescription(rs.getString("description"));    
-                
-                
+                                
                 courses.add(course);
-            }   else{
-                return null;
-            }         
+            }        
         }catch (Exception e){
             e.printStackTrace();
         }

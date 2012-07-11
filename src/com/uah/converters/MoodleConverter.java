@@ -35,6 +35,29 @@ public class MoodleConverter {
    
    /**
     * 
+    * @param coursesDTO
+    * @return 
+    */
+   public List<Course> getMoodleCourseItemFromCourseDTO(List<CourseMoodleDTO> coursesDTO){       
+        Course courseItem = new Course();   
+        List<Course> courses = new ArrayList<Course>();   
+
+        for(CourseMoodleDTO courseDTO: coursesDTO){
+            
+            courseItem.setId(courseDTO.getId());
+            courseItem.setFullname(courseDTO.getFullname());
+            courseItem.setShortname(courseDTO.getShortname());
+            courseItem.setSummary(courseDTO.getSummary());
+            
+            courses.add(courseItem);
+        }        
+
+        return courses;
+   }
+   
+   
+   /**
+    * 
     * @param forumsDTO
     * @return 
     */

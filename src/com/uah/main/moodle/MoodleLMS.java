@@ -13,6 +13,7 @@ import com.uah.commons.DataBaseManagement;
 import com.uah.commons.FileRProcessor;
 import com.uah.converters.MoodleConverter;
 import com.uah.dao.moodle.*;
+import com.uah.dto.dokeos.CourseDokeosDTO;
 import com.uah.dto.modle.*;
 import com.uah.exceptions.ConnectionParametersException;
 import com.uah.exceptions.OperationNotSupportedException;
@@ -142,6 +143,19 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
         return course;       
     }
  
+    
+    /**
+     * 
+     * @param id
+     * @return 
+     */
+    @Override
+    public List<Course> getCourse(){        
+        CourseMoodleDAO courseDAO = new CourseMoodleDAO(connection);
+        List<CourseMoodleDTO> coursesDTO = courseDAO.selectCourse();
+
+        return converter.getMoodleCourseItemFromCourseDTO(coursesDTO);       
+    }
 
     /**
      *

@@ -28,6 +28,8 @@ public interface LMS{
     
     public abstract Course getCourse(String id);
     
+    public abstract List<Course> getCourse();
+    
     public abstract List<Forum> getForums();
     
     public abstract List<Forum> getForums(Course course);

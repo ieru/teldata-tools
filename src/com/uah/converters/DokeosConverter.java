@@ -6,6 +6,7 @@ package com.uah.converters;
 
 
 import com.uah.dto.dokeos.*;
+import com.uah.dto.modle.CourseMoodleDTO;
 import com.uah.items.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,29 @@ public class DokeosConverter {
         return courseItem;
    }
    
+   
+   /**
+    * 
+    * @param coursesDTO
+    * @return 
+    */
+   public List<Course> getDokeoseCourseItemFromCourseDTO(List<CourseDokeosDTO> coursesDTO){       
+        Course courseItem = new Course();   
+        List<Course> courses = new ArrayList<Course>();   
+
+        for(CourseDokeosDTO courseDTO: coursesDTO){
+            
+            courseItem.setId(courseDTO.getCode());
+            courseItem.setFullname(courseDTO.getTitle());
+            courseItem.setShortname("");
+            courseItem.setSummary(courseDTO.getDescription());
+            courseItem.setConfigExtraData(courseDTO.getDb_name());
+            
+            courses.add(courseItem);
+        }        
+
+        return courses;
+   }
    
    /**
     * 
