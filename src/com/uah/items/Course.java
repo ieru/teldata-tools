@@ -6,7 +6,8 @@ package com.uah.items;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class Course {
     /**************************************************************************
@@ -15,8 +16,7 @@ public class Course {
     private String id;    
     private String fullname;
     private String shortname;
-    private String summary;
-    
+    private String summary;    
     private String configExtraData;
 
 

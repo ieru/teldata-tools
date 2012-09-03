@@ -50,6 +50,10 @@ public class PostMoodleDAO  extends DAO{
     }
     
     
+    /**
+     * 
+     * @return 
+     */
      public List<PostMoodleDTO> selectPosts(){
         PostMoodleDTO post;
         List<PostMoodleDTO> posts = new ArrayList<PostMoodleDTO>();
@@ -75,5 +79,31 @@ public class PostMoodleDAO  extends DAO{
         }
         
         return posts;
+    }
+     
+     
+     public PostMoodleDTO selectPostsById(String idPost){
+        PostMoodleDTO post = new PostMoodleDTO();
+                
+        try {
+            String sqlOrder = "SELECT id, discussion, parent, userid, subject, message FROM mdl_forum_posts WHERE id='"+idPost+"'";            
+            statement = connection.createStatement();
+            rs = statement.executeQuery( sqlOrder );
+            
+            while(rs.next()){   
+                post = new PostMoodleDTO();
+    
+                post.setIdThread(rs.getString("discussion"));
+                post.setIdPost(rs.getString("id"));
+                post.setIdPostParent(rs.getString("parent"));                
+                post.setIdUser(rs.getString("userid"));
+                post.setMessage(rs.getString("message"));
+                post.setSubject(rs.getString("subject"));                             
+            }               
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        
+        return post;
     }
 }

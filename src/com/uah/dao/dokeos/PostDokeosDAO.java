@@ -52,7 +52,11 @@ public class PostDokeosDAO  extends DAO{
     }
     
     
-    
+    /**
+     * 
+     * @param db_name
+     * @return 
+     */
     public List<PostDokeosDTO> selectPosts(String db_name){
         PostDokeosDTO post;
         List<PostDokeosDTO> posts = new ArrayList<PostDokeosDTO>();
@@ -80,5 +84,37 @@ public class PostDokeosDAO  extends DAO{
         }
         
         return posts;
+    }
+    
+    /**
+     * 
+     * @param db_name
+     * @return 
+     */
+    public PostDokeosDTO selectPostById(String db_name, String idPost){
+        PostDokeosDTO post = new PostDokeosDTO();
+               
+        try {
+            String sqlOrder = "SELECT post_id, post_title, post_text, thread_id, forum_id, poster_id, post_parent_id FROM "+db_name+".forum_post WHERE post_id='"+idPost+"'";            
+            statement = connection.createStatement();
+            rs = statement.executeQuery( sqlOrder );
+            
+            if(rs.next()){   
+                post = new PostDokeosDTO();
+    
+                post.setId(rs.getString("post_id"));
+                post.setIdThread(rs.getString("forum_id"));
+                post.setPostParentId(rs.getString("post_parent_id"));   
+                post.setIdUser(rs.getString("poster_id"));
+                post.setPostText(rs.getString("post_text"));  
+                post.setTitle(rs.getString("post_title"));  
+                post.setDb_name(db_name);
+                               
+            }               
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        
+        return post;
     }
 }

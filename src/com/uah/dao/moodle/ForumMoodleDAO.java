@@ -88,4 +88,35 @@ public class ForumMoodleDAO extends DAO{
         return forums;
     }
     
+    /**
+     * 
+     * @param idForum
+     * @return 
+     */
+    public ForumMoodleDTO selectForumsById(String idForum){
+        ForumMoodleDTO forum = new ForumMoodleDTO();
+      
+        try {
+            String sqlOrder = "SELECT id, type, name, course, intro FROM mdl_forum WHERE id='"+idForum+"'";            
+            statement = connection.createStatement();
+            rs = statement.executeQuery( sqlOrder );
+
+            
+            if(rs.next()){   
+                forum = new ForumMoodleDTO();
+                forum.setId(rs.getString("id"));
+                forum.setType(rs.getString("type"));
+                forum.setName(rs.getString("name"));
+                forum.setIntro(rs.getString("intro"));
+                forum.setCourseId(rs.getString("course"));
+                           
+            }               
+            
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        
+        return forum;
+    }
+    
 }

@@ -7,7 +7,6 @@ package com.uah.dao.dokeos;
 
 import com.uah.dao.DAO;
 import com.uah.dto.dokeos.CourseDokeosDTO;
-import com.uah.dto.modle.CourseMoodleDTO;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;

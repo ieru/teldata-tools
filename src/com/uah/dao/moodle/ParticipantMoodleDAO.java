@@ -51,7 +51,10 @@ public class ParticipantMoodleDAO extends DAO{
     }
     
     
-    
+    /**
+     * 
+     * @return 
+     */
     public List<ParticipantMoodleDTO> selectParticipants(){
         ParticipantMoodleDTO participant;
         List<ParticipantMoodleDTO> participants = new ArrayList<ParticipantMoodleDTO>();
@@ -83,5 +86,6 @@ public class ParticipantMoodleDAO extends DAO{
         
         return participants;
     }
+    
     
 }

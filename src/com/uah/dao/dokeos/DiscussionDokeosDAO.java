@@ -49,7 +49,11 @@ public class DiscussionDokeosDAO  extends DAO{
     }
     
     
-    
+    /**
+     * 
+     * @param db_name
+     * @return 
+     */
     public List<DiscussionDokeosDTO> selectDiscussions(String db_name){
         DiscussionDokeosDTO discussion;
         List<DiscussionDokeosDTO> threads = new ArrayList<DiscussionDokeosDTO>();
@@ -77,4 +81,34 @@ public class DiscussionDokeosDAO  extends DAO{
         return threads;
     }
     
+    
+    /**
+     * 
+     * @param db_name
+     * @return 
+     */
+    public DiscussionDokeosDTO selectDiscussionsById(String db_name, String idDiscussion){
+        DiscussionDokeosDTO discussion = new DiscussionDokeosDTO();
+        
+        try {
+            String sqlOrder = "SELECT thread_id, thread_title, forum_id, thread_poster_id FROM "+db_name+".forum_thread WHERE thread_id='"+idDiscussion+"'";            
+            statement = connection.createStatement();
+            rs = statement.executeQuery( sqlOrder );
+            
+            while(rs.next()){   
+                discussion = new DiscussionDokeosDTO();
+    
+                discussion.setId(rs.getString("thread_id"));
+                discussion.setForum_id(rs.getString("forum_id"));
+                discussion.setThread_title(rs.getString("thread_title"));    
+                discussion.setDb_name(db_name);
+                discussion.setUser_id("thread_poster_id");
+                            
+            }               
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        
+        return discussion;
+    }
 }
