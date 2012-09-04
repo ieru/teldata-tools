@@ -9,7 +9,6 @@ import com.uah.commons.DataBaseManagement;
 import com.uah.commons.FileRProcessor;
 import com.uah.converters.MoodleConverter;
 import com.uah.dao.moodle.*;
-import com.uah.dto.dokeos.CourseDokeosDTO;
 import com.uah.dto.modle.*;
 import com.uah.exceptions.ConnectionParametersException;
 import com.uah.exceptions.OperationNotSupportedException;
@@ -224,7 +223,7 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
     @Override
     public Discussion getDiscussion(String idDiscussion) {
         List<DiscussionMoodleDTO> discussionsDTO = new ArrayList();
-        DiscussionMoodleDTO discussionDTO = new DiscussionMoodleDTO();
+        DiscussionMoodleDTO discussionDTO;
         List<Discussion> discussions;
         DiscussionMoodleDAO discussionDAO = new DiscussionMoodleDAO(connection);
         
@@ -344,6 +343,7 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
      * 
      * @return 
      */
+    @Override
     public List<PostRating> getPostRating(){
         List<PostRatingMoodleDTO> ratingsDTO;
         List<PostRating> ratingsItem;
@@ -362,13 +362,13 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
      * @param idPost
      * @return 
      */
+    @Override
     public List<PostRating> getPostRating(String idPost){
         List<PostRatingMoodleDTO> ratingsDTO;
         List<PostRating> ratingsItem;
         PostRatingMoodleDAO dao = new PostRatingMoodleDAO(connection);
 
         ratingsDTO = dao.selectPostRating(idPost);
-
         ratingsItem = converter.getMoodlePostRatingsFromPostRatingsDTO(ratingsDTO);
         
         return ratingsItem;

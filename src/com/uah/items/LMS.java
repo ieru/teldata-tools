@@ -59,5 +59,9 @@ public interface LMS{
     public abstract void getForumRaitingInRFile(String filename) throws OperationNotSupportedException;
     
     public abstract Connection getConnection();
+    
+    public List<PostRating> getPostRating();
+             
+    public List<PostRating> getPostRating(String idPost);
 
 }

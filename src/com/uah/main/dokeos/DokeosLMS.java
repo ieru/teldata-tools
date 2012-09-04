@@ -9,7 +9,9 @@ import com.uah.commons.DataBaseConnectionParameters;
 import com.uah.commons.DataBaseManagement;
 import com.uah.converters.DokeosConverter;
 import com.uah.dao.dokeos.*;
+import com.uah.dao.moodle.PostRatingMoodleDAO;
 import com.uah.dto.dokeos.*;
+import com.uah.dto.modle.PostRatingMoodleDTO;
 import com.uah.exceptions.ConnectionParametersException;
 import com.uah.exceptions.OperationNotSupportedException;
 import com.uah.graph.MavselGraphManager;
@@ -413,8 +415,7 @@ public class DokeosLMS extends DataBaseManagement implements LMS {
         throw new OperationNotSupportedException("DOKEOS does not support rating forums.");
 
     }
-    
-    
+        
     /**
      * 
      * @return 
@@ -422,5 +423,28 @@ public class DokeosLMS extends DataBaseManagement implements LMS {
     @Override
     public Connection getConnection() {
         return connection;
+    }
+    
+    
+    /**
+     * 
+     * @return null, Dokeos does not support rating
+     */
+    @Override
+    public List<PostRating> getPostRating(){
+        
+        return null;
+    }
+    
+    
+    /**
+     * 
+     * @param idPost
+     * @return null, Dokeos does not support rating
+     */
+    @Override
+    public List<PostRating> getPostRating(String idPost){
+        
+        return null;
     }
 }
