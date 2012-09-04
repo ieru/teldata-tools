@@ -413,4 +413,14 @@ public class DokeosLMS extends DataBaseManagement implements LMS {
         throw new OperationNotSupportedException("DOKEOS does not support rating forums.");
 
     }
+    
+    
+    /**
+     * 
+     * @return 
+     */
+    @Override
+    public Connection getConnection() {
+        return connection;
+    }
 }

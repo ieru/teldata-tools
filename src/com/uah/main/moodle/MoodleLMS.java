@@ -425,4 +425,13 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
      * //Vertex does not exists return null; }
      *
      */
+    
+    /**
+     * 
+     * @return 
+     */
+    @Override
+    public Connection getConnection() {
+        return connection;
+    }
 }

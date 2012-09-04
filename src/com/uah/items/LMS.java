@@ -57,5 +57,7 @@ public interface LMS{
     public abstract Graph<MavselVertex, String> getParticipantForumGraph(List<Forum>forums);
      
     public abstract void getForumRaitingInRFile(String filename) throws OperationNotSupportedException;
+    
+    public abstract Connection getConnection();
 
 }

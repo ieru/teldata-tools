@@ -79,13 +79,7 @@ public class DataBaseManagement {
         }  
     }
 
-    /**
-     * 
-     * @return 
-     */
-    public static Connection getConnection() {
-        return connection;
-    }
+    
     
     
 }
