@@ -169,7 +169,7 @@ public class DokeosLMS extends DataBaseManagement implements LMS {
      * @return
      */
     @Override
-    public List<Forum> getForums(String idForum) {
+    public Forum getForum(String idForum) {
         CourseDokeosDAO courseDAO = new CourseDokeosDAO(connection);
         ForumDokeosDAO forumDAO = new ForumDokeosDAO(connection);
 
@@ -188,7 +188,7 @@ public class DokeosLMS extends DataBaseManagement implements LMS {
 
         forums = converter.getDokeosForumsItemFromForumsDTO(forumsDTO);
 
-        return forums;
+        return forums.get(0);
     }
 
     /**
@@ -239,7 +239,7 @@ public class DokeosLMS extends DataBaseManagement implements LMS {
      * @return
      */
     @Override
-    public List<Discussion> getDiscussions(String idDiscussion) {
+    public Discussion getDiscussion(String idDiscussion) {
         CourseDokeosDAO courseDAO = new CourseDokeosDAO(connection);
         DiscussionDokeosDAO discussionDAO = new DiscussionDokeosDAO(connection);
 
@@ -258,7 +258,7 @@ public class DokeosLMS extends DataBaseManagement implements LMS {
 
         discussions = converter.getDokeosDiscussionsItemFromDiscussionsDTO(discussionsDTO);
 
-        return discussions;
+        return discussions.get(0);
     }
 
     /**
@@ -305,7 +305,7 @@ public class DokeosLMS extends DataBaseManagement implements LMS {
     }
 
     @Override
-    public List<Post> getPosts(String idPost) {
+    public Post getPost(String idPost) {
         CourseDokeosDAO courseDAO = new CourseDokeosDAO(connection);
         PostDokeosDAO postDAO = new PostDokeosDAO(connection);
 
@@ -323,7 +323,7 @@ public class DokeosLMS extends DataBaseManagement implements LMS {
 
         posts = converter.getDokeosPostsItemFromPostsDTO(postsDTO);
 
-        return posts;
+        return posts.get(0);
     }
 
     /**

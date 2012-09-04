@@ -32,19 +32,19 @@ public interface LMS{
     
     public abstract List<Forum> getForums();
     
-    public abstract List<Forum> getForums(String idForum);
+    public abstract Forum getForum(String idForum);
     
     public abstract List<Forum> getForums(Course course);
     
     public abstract List<Discussion> getDiscussions();
     
-    public abstract List<Discussion> getDiscussions(String idDiscussion);
+    public abstract Discussion getDiscussion(String idDiscussion);
     
     public abstract List<Discussion> getDiscussions(Forum forum);      
     
     public abstract List<Post> getPosts();
     
-    public abstract List<Post> getPosts(String idPost);
+    public abstract Post getPost(String idPost);
     
     public abstract List<Post> getPosts(Discussion discussion);
     

@@ -170,7 +170,7 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
      * @return 
      */
     @Override
-    public List<Forum> getForums(String idForum) {
+    public Forum getForum(String idForum) {
         List<ForumMoodleDTO> forumsDTO = new ArrayList();
         ForumMoodleDTO forumDTO;
         List<Forum> forums;
@@ -180,7 +180,7 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
         forumsDTO.add(forumDTO);
         forums = converter.getMoodleForumsItemFromForumsDTO(forumsDTO);
 
-        return forums;
+        return forums.get(0);
     }
 
     /**
@@ -222,7 +222,7 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
      * @return
      */
     @Override
-    public List<Discussion> getDiscussions(String idDiscussion) {
+    public Discussion getDiscussion(String idDiscussion) {
         List<DiscussionMoodleDTO> discussionsDTO = new ArrayList();
         DiscussionMoodleDTO discussionDTO = new DiscussionMoodleDTO();
         List<Discussion> discussions;
@@ -233,7 +233,7 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
         
         discussions = converter.getMoodleDiscussionsItemFromDiscussionsDTO(discussionsDTO);
 
-        return discussions;
+        return discussions.get(0);
     }
 
     /**
@@ -275,7 +275,7 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
      * @return
      */
     @Override
-    public List<Post> getPosts(String idPost) {
+    public Post getPost(String idPost) {
         List<PostMoodleDTO> postsDTO = new ArrayList();
         PostMoodleDTO postDTO;
         List<Post> posts;
@@ -286,7 +286,7 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
         
         posts = converter.getMoodlePostsItemFromPostsDTO(postsDTO);
 
-        return posts;
+        return posts.get(0);
     }
 
     /**
