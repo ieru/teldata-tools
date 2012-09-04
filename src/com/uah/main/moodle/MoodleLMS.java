@@ -339,12 +339,12 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
         return participant;
     }
 
+    
     /**
-     *
-     * @return
+     * 
+     * @return 
      */
-    @Override
-    public void getForumRaitingInRFile(String filename) throws OperationNotSupportedException {
+    public List<PostRating> getPostRating(){
         List<PostRatingMoodleDTO> ratingsDTO;
         List<PostRating> ratingsItem;
         PostRatingMoodleDAO dao = new PostRatingMoodleDAO(connection);
@@ -352,10 +352,38 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
         ratingsDTO = dao.selectPostRating();
 
         ratingsItem = converter.getMoodlePostRatingsFromPostRatingsDTO(ratingsDTO);
+        
+        return ratingsItem;
+    }
+    
+    
+    /**
+     * 
+     * @param idPost
+     * @return 
+     */
+    public List<PostRating> getPostRating(String idPost){
+        List<PostRatingMoodleDTO> ratingsDTO;
+        List<PostRating> ratingsItem;
+        PostRatingMoodleDAO dao = new PostRatingMoodleDAO(connection);
+
+        ratingsDTO = dao.selectPostRating(idPost);
+
+        ratingsItem = converter.getMoodlePostRatingsFromPostRatingsDTO(ratingsDTO);
+        
+        return ratingsItem;
+    }
+    
+        
+    /**
+     *
+     * @return
+     */
+    @Override
+    public void getForumRaitingInRFile(String filename) throws OperationNotSupportedException {
 
         FileRProcessor fileRProcessor = new FileRProcessor();
-        fileRProcessor.printIntoFile(filename, ratingsItem);
-
+        fileRProcessor.printIntoFile(filename, getPostRating());
     }
 
     /**

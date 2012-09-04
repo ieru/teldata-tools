@@ -4,7 +4,6 @@
  */
 package com.uah.items;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,8 +24,7 @@ public class PostRating {
     private List<String> fields;
     
     public PostRating(){
-        
-        
+                
     }
 
     public String getCourseid() {
