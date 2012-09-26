@@ -44,7 +44,6 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
      */
     public MoodleLMS() {
         this.converter = new MoodleConverter();
-        this.graphManager = new MavselGraphManager();
     }
 
     /**
