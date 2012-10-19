@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.uah.commons;
 
 import com.uah.items.PostRating;
@@ -12,13 +8,19 @@ import java.util.List;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class FileRProcessor {
-    
+    /**************************************************************************
+    *                              ATTRIBUTES
+    **************************************************************************/
     private List<String> fields;
 
     
+    /**************************************************************************
+    *                              PUBLIC METHODS
+    ***************************************************************************/
     public FileRProcessor() {
         
     }
@@ -39,12 +41,9 @@ public class FileRProcessor {
     
 
     /**
-     * ************************************************************************
-     * printIntoFile
-     *
+     * 
      * @param fileName
-     * @param content
-     ************************************************************************
+     * @param ratingsItem 
      */
     public void printIntoFile(String fileName, List<PostRating> ratingsItem) {
         FileWriter file = null;
@@ -70,17 +69,8 @@ public class FileRProcessor {
                 printWrite.print(rating.getRolename() + "\t");
                 printWrite.print(rating.getScaleid() + "\t");
                 printWrite.print(rating.getUserid() + "\t");
-                
-                
-              
-     
-
-
-
-  
+                               
             }
-
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

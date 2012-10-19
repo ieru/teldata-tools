@@ -1,28 +1,29 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.uah.items;
 
 
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class Post {
-    
+    /**************************************************************************
+    *                              ATTRIBUTES
+    **************************************************************************/
     private String id;
     private String idDiscussion;
     private String idPostParent;
-    private String idParticipant;
-    
+    private String idParticipant;    
     private String subject;
     private String message;
-
     private String configExtraData;
     private String createdTime;
     
+    
+    /**************************************************************************
+    *                              getters & setters
+    **************************************************************************/
     public String getId() {
         return id;
     }

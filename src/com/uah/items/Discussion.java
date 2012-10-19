@@ -6,20 +6,25 @@ package com.uah.items;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class Discussion {
+    /**************************************************************************
+    *                              ATTRIBUTES
+    **************************************************************************/
     private String id;
     private String idCourse;
     private String idForum;    
     private String idGroup;
-    private String idParticipant;
-    
-    private String title;
-    
+    private String idParticipant;    
+    private String title;    
     private String configExtraData;
 
     
+    /**************************************************************************
+    *                              getters & setters
+    **************************************************************************/
     public String getIdCourse() {
         return idCourse;
     }

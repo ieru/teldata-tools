@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.uah.converters;
 
 import com.uah.dto.modle.*;
@@ -11,9 +7,14 @@ import java.util.List;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class MoodleConverter {
+    
+    /**************************************************************************
+    *                              PUBLIC METHODS
+    ***************************************************************************/
     
     /**
      * 

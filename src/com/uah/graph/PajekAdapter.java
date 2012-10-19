@@ -1,23 +1,21 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.uah.graph;
 import edu.uci.ics.jung.algorithms.layout.ISOMLayout;
 import edu.uci.ics.jung.algorithms.layout.Layout;
-import edu.uci.ics.jung.graph.*;
+import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.graph.event.GraphEvent.Edge;
 import edu.uci.ics.jung.io.PajekNetWriter;
 import edu.uci.ics.jung.visualization.BasicVisualizationServer;
 import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
 /**
  *
- * @author Administrador
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class PajekAdapter {
 
-
+    /**************************************************************************
+    *                              PUBLIC METHODS
+    ***************************************************************************/
 
     /**
      *

@@ -1,25 +1,24 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.uah.dto.dokeos;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class DiscussionDokeosDTO {
+    /**************************************************************************
+    *                              ATTRIBUTES
+    **************************************************************************/
     private String id;
     private String thread_title;
     private String forum_id;
-    private String user_id;
-    
+    private String user_id;    
     private String db_name;
 
-    public DiscussionDokeosDTO(){
-        
-    }
 
+    /**************************************************************************
+    *                              getters & setters
+    **************************************************************************/
     public String getForum_id() {
         return forum_id;
     }

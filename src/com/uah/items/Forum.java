@@ -6,17 +6,24 @@ package com.uah.items;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class Forum extends Object{
+    /**************************************************************************
+    *                              ATTRIBUTES
+    **************************************************************************/
     private String id;
     private String idCourse;
     private String title;
     private String description;
     private String type;
-
     private String configExtraData;
 
+    
+    /**************************************************************************
+    *                              getters & setters
+    **************************************************************************/
     public String getDescription() {
         return description;
     }

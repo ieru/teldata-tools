@@ -6,10 +6,13 @@ package com.uah.items;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class Participant{
-    
+    /**************************************************************************
+    *                              ATTRIBUTES
+    **************************************************************************/
     private String id;
     private String username;
     private String firstname;
@@ -18,10 +21,13 @@ public class Participant{
     private String address;
     private String city;
     private String country;
-    private String language;
-    
+    private String language;    
     private String configExtraData;
 
+    
+    /**************************************************************************
+    *                              getters & setters
+    **************************************************************************/
     public String getAddress() {
         return address;
     }

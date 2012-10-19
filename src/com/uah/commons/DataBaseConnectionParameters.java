@@ -1,14 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.uah.commons;
 
 import com.uah.exceptions.ConnectionParametersException;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class DataBaseConnectionParameters {
     /**************************************************************************
@@ -27,8 +24,13 @@ public class DataBaseConnectionParameters {
     ***************************************************************************/
     
     /**
-     * Constructor
-     */   
+     * 
+     * @param dataBaseURL
+     * @param dataBasePort
+     * @param dataBaseName
+     * @param dataBaseUser
+     * @param dataBaseUserPass 
+     */  
     public DataBaseConnectionParameters(String dataBaseURL, String dataBasePort, 
             String dataBaseName, String dataBaseUser, String dataBaseUserPass){
         this.dataBaseURL = dataBaseURL;

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.uah.commons;
 
 import java.sql.Connection;
@@ -9,7 +5,8 @@ import java.sql.DriverManager;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class DataBaseManagement {
     /**************************************************************************
@@ -26,8 +23,9 @@ public class DataBaseManagement {
     ***************************************************************************/  
    
     /**
-     * initDataBaseConnection
-     */   
+     * 
+     * @param dbConnectionParams 
+     */  
     public void initDataBaseConnection(DataBaseConnectionParameters dbConnectionParams){
         
         try{               

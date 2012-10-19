@@ -1,12 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.uah.dto.modle;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class ForumMoodleDTO {
     /**************************************************************************
@@ -18,6 +15,10 @@ public class ForumMoodleDTO {
     private String name;
     private String intro;
 
+    
+    /**************************************************************************
+    *                              getters & setters
+    **************************************************************************/
     public String getCourseId() {
         return courseId;
     }

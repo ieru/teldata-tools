@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.uah.main.dokeos;
 
 
@@ -22,22 +18,21 @@ import java.util.List;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class DokeosLMS extends DataBaseManagement implements LMS {
 
-    /**
-     * ************************************************************************
-     * ATTRIBUTES
-    *************************************************************************
-     */
+    /**************************************************************************
+    *                              ATTRIBUTES
+    **************************************************************************/
     private DokeosConverter converter;
 
-    /**
-     * ************************************************************************
-     * PUBLIC METHODS
-    **************************************************************************
-     */
+    
+    /**************************************************************************
+    *                              PUBLIC METHODS
+    ***************************************************************************/
+    
     /**
      * Constructor
      */

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.uah.dao.moodle;
 
 import com.uah.dao.DAO;
@@ -12,10 +8,14 @@ import java.util.List;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class PostRatingMoodleDAO  extends DAO{
     
+    /**************************************************************************
+    *                              PUBLIC METHODS
+    ***************************************************************************/
      public PostRatingMoodleDAO(Connection connection){
         super(connection);
     }

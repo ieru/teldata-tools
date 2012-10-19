@@ -1,16 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.uah.items;
 
 import java.util.List;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class PostRating {    
+    /**************************************************************************
+    *                              ATTRIBUTES
+    **************************************************************************/
     private String postid;
     private String scaleid;
     private String rating;
@@ -19,10 +19,13 @@ public class PostRating {
     private String forumid;
     private String roleid;
     private String rolename;
-    private String forumname;
-    
+    private String forumname;    
     private List<String> fields;
     
+    
+    /**************************************************************************
+    *                              getters & setters
+    **************************************************************************/
     public PostRating(){
                 
     }

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.uah.dao.dokeos;
 
 
@@ -13,9 +9,13 @@ import java.util.List;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class CourseDokeosDAO extends DAO{
+    /**************************************************************************
+    *                              PUBLIC METHODS
+    ***************************************************************************/
     
     /**
      * 
@@ -85,6 +85,10 @@ public class CourseDokeosDAO extends DAO{
         return courses;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public List<CourseDokeosDTO>selectCourses(){
         List<CourseDokeosDTO> courses = new ArrayList();
         CourseDokeosDTO course;

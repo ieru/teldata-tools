@@ -1,14 +1,15 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.uah.graph;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class MavselVertex {
+    /**************************************************************************
+    *                              ATTRIBUTES
+    **************************************************************************/
     private String id;
     private String description;
     private boolean type;
@@ -19,6 +20,10 @@ public class MavselVertex {
     public static String USER_LABEL = "] UserLabel:: ";
     public static String FORUM_LABEL = "] ForumLabel:: ";
 
+    
+    /**************************************************************************
+    *                              PUBLIC METHODS
+    ***************************************************************************/
     
     /**
      *

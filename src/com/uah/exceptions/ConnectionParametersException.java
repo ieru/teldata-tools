@@ -1,16 +1,17 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.uah.exceptions;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class ConnectionParametersException extends Exception{
     
    
+/**
+ * 
+ * @param message 
+ */
     public ConnectionParametersException(String message){
         super(message);
     }

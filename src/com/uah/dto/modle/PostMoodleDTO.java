@@ -1,24 +1,26 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.uah.dto.modle;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class PostMoodleDTO {
-    
+    /**************************************************************************
+    *                              ATTRIBUTES
+    **************************************************************************/
     private String idPost;
     private String idThread;
     private String idPostParent;
-    private String idUser;
-    
+    private String idUser;    
     private String subject;
     private String message;
     private String created;
 
+    
+    /**************************************************************************
+    *                              getters & setters
+    **************************************************************************/
     public String getIdPost() {
         return idPost;
     }

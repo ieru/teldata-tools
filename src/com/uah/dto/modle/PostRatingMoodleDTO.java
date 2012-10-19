@@ -1,27 +1,28 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.uah.dto.modle;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class PostRatingMoodleDTO {
-    
-    
+    /**************************************************************************
+    *                              ATTRIBUTES
+    **************************************************************************/    
     private String postid;
     private String courseid;
     private String forumid;
     private String userid;
     private String scaleid;
-    private String roleid;
-    
+    private String roleid;    
     private String rating;        
     private String rolename;
     private String forumName;
 
+    
+    /**************************************************************************
+    *                              getters & setters
+    **************************************************************************/
     public String getCourseid() {
         return courseid;
     }

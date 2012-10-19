@@ -1,28 +1,26 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.uah.graph;
 
-import edu.uci.ics.jung.algorithms.layout.ISOMLayout;
-import edu.uci.ics.jung.algorithms.layout.Layout;
 import edu.uci.ics.jung.graph.Graph;
-import edu.uci.ics.jung.graph.event.GraphEvent;
-import edu.uci.ics.jung.io.PajekNetWriter;
-import edu.uci.ics.jung.visualization.BasicVisualizationServer;
-import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
 import java.util.Collection;
 
 
 /**
  *
- * @author ie
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class SoniaAdapter {
+    /**************************************************************************
+    *                              ATTRIBUTES
+    **************************************************************************/
     public static final String columsNode[] = {"NodeId", "Label", "StartTime", "EndTime", "NodeSize", "NodeShape", "ColorName", "BorderWidth", "BorderColor"};
     public static final String columsFrom[] = {"FromId","ToId","StartTime", "EndTime", "ArcWeight", "ArcWidth", "ColorName"};
     
     
+    /**************************************************************************
+    *                              PUBLIC METHODS
+    ***************************************************************************/
     public static void export(String fileName, Graph<MavselVertex,String> graph){
         StringBuffer file = new StringBuffer();
         try{
@@ -157,16 +155,17 @@ public class SoniaAdapter {
         System.out.println("File SoNIA["+file.toString()+"] SoNIA format");
     }
     
+
+    
+    /**************************************************************************
+    *                              PRIVATE METHODS
+    ***************************************************************************/
     
     /**
      * 
+     * @param edgeDescription
      * @return 
      */
-    /*
-    private String SoNIAFile(){
-        
-    }*/
-    
     private static String extractStratTime(String edgeDescription){   
         int ini = edgeDescription.indexOf(MavselGraphManager.INIT_CREATEDTIME)+MavselGraphManager.INIT_CREATEDTIME.length(); 
         int fin = edgeDescription.indexOf(MavselGraphManager.END_CREATEDTIME); 
@@ -174,6 +173,11 @@ public class SoniaAdapter {
         return edgeDescription.substring(ini, fin);
     }
     
+    /**
+     * 
+     * @param edgeDescription
+     * @return 
+     */
     private static String extractForumId(String edgeDescription){
         int ini = edgeDescription.indexOf(MavselVertex.FORUM_TOSTRING_INIT)+MavselVertex.FORUM_TOSTRING_INIT.length(); 
         int fin = edgeDescription.indexOf(MavselVertex.FORUM_LABEL); 
@@ -181,6 +185,11 @@ public class SoniaAdapter {
         return edgeDescription.substring(ini, fin);
     }
     
+    /**
+     * 
+     * @param edgeDescription
+     * @return 
+     */
     private static String extractParticipantId(String edgeDescription){        
         int ini = edgeDescription.indexOf(MavselVertex.USER_TOSTRING_INIT)+MavselVertex.USER_TOSTRING_INIT.length(); 
         int fin = edgeDescription.indexOf(MavselVertex.USER_LABEL); 

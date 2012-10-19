@@ -5,22 +5,20 @@
 package com.uah.items;
 
 
-import java.sql.Connection;
 import com.uah.exceptions.OperationNotSupportedException;
 import com.uah.graph.MavselVertex;
 import edu.uci.ics.jung.graph.Graph;
+import java.sql.Connection;
 import java.util.List;
 
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
-public interface LMS{
-             
-    /**************************************************************************
-    *                              PUBLIC METHODS
-    ***************************************************************************/       
+public interface LMS{            
+    
     public abstract void configureLMS(String dataBaseURL, String dataBasePort, 
             String dataBaseName, String dataBaseUser, String dataBaseUserPass) throws Exception;      
     

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.uah.main.moodle;
 
 import com.uah.commons.DataBaseConnectionParameters;
@@ -22,23 +18,22 @@ import java.util.List;
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sicilia
+ * @version Mavsel Tool 1.0
  */
 public class MoodleLMS extends DataBaseManagement implements LMS {
 
-    /**
-     * ************************************************************************
-     * ATTRIBUTES
-    *************************************************************************
-     */
+    /**************************************************************************
+    *                              ATTRIBUTES
+    **************************************************************************/
     private MoodleConverter converter;
     private MavselGraphManager graphManager;
 
-    /**
-     * ************************************************************************
-     * PUBLIC METHODS
-    **************************************************************************
-     */
+    
+    /**************************************************************************
+    *                              PUBLIC METHODS
+    ***************************************************************************/
+    
     /**
      * Constructor
      */
@@ -75,11 +70,7 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
         }
     }
 
-    /**
-     * ************************************************************************
-     * PUBLIC METHODS
-    **************************************************************************
-     */
+
     /**
      *
      * @param dataBaseURL
