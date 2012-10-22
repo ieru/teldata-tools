@@ -36,7 +36,7 @@ public class MavselGraphManager {
      * @param lms
      * @return
      */
-    public Graph<MavselVertex, String> getParticipantForumGraph(Course course, LMS lms) {
+    public Graph<MavselVertex, MavselEdge> getParticipantForumGraph(Course course, LMS lms) {
 
         List<Forum> forums = lms.getForums(course);
         return getParticipantForumGraph(forums, lms);
@@ -51,7 +51,7 @@ public class MavselGraphManager {
      * @param lms
      * @return
      */
-    public Graph<MavselVertex, String> getParticipantForumGraph(List<Forum> forums, LMS lms) {
+    public Graph<MavselVertex, MavselEdge> getParticipantForumGraph(List<Forum> forums, LMS lms) {
 
         return extractGraph(forums, lms);
     }
@@ -65,15 +65,16 @@ public class MavselGraphManager {
      * @param lms
      * @return
      */
-    public Graph<MavselVertex, String> extractGraph(List<Forum> forums, LMS lms) {
+    public Graph<MavselVertex, MavselEdge> extractGraph(List<Forum> forums, LMS lms) {
         MavselVertex forumVertex = new MavselVertex("",false,"");
         MavselVertex participantVertex = new MavselVertex("",false,"");
+        MavselEdge edge = new MavselEdge();
         List<Discussion> discussions;
         List<Post> posts;
         HashMap forumNodes = new HashMap();
         HashMap userNodes = new HashMap();
 
-        Graph<MavselVertex, String> graph = new SparseMultigraph<MavselVertex, String>();
+        Graph<MavselVertex, MavselEdge> graph = new SparseMultigraph<MavselVertex, MavselEdge>();
 
         int temp = 0;
              //Graph<String, String> graphtester = new SparseMultigraph<String, String>();
@@ -83,7 +84,7 @@ public class MavselGraphManager {
             //Checking if the new forum node alredy exists
             if (forumNodes.containsKey(forumVertex.getId())) {
                 //forum vertice alredy exists
-                System.out.println("Forum alredy exist");
+                //System.out.println("Forum alredy exist");
                 forumVertex = (MavselVertex) forumNodes.get(forumVertex.getId());
             } else {
                 //add a new forum vertice
@@ -104,7 +105,7 @@ public class MavselGraphManager {
                     //Checking if the new user node alredy exists
                     if (userNodes.containsKey(participantVertex.getId())) {
                         //participant vertice alredy exists
-                        System.out.println("participant alredy exist");
+                        //System.out.println("participant alredy exist");
                         participantVertex = (MavselVertex) userNodes.get(participantVertex.getId());
                     } else {
                         //add a new participant vertice
@@ -117,8 +118,9 @@ public class MavselGraphManager {
                     try {
                    
                         //graph.addEdge(forumVertex.toString() + SEPARATOR + participantVertex.toString() + SEPARATOR + INIT_CREATEDTIME + post.getCreatedTime() + END_CREATEDTIME, forumVertex, participantVertex, EdgeType.DIRECTED);
-                        graph.addEdge(INIT_CREATEDTIME + post.getCreatedTime() + END_CREATEDTIME, forumVertex, participantVertex,EdgeType.DIRECTED);
-                        System.out.println("NEW EDGE - "+ forumVertex.toString() + participantVertex.toString() + INIT_CREATEDTIME + post.getCreatedTime() + END_CREATEDTIME);
+                        edge = new MavselEdge(post.getCreatedTime(),participantVertex,forumVertex );
+                        graph.addEdge(edge, participantVertex, forumVertex, EdgeType.DIRECTED);
+                        //System.out.println("NEW EDGE - "+ forumVertex.toString() + participantVertex.toString() + INIT_CREATEDTIME + post.getCreatedTime() + END_CREATEDTIME);
                         
                         
                  /*
@@ -167,39 +169,17 @@ public class MavselGraphManager {
             
             
         }
-     
-        System.out.println("---------------------------------------------");
+     /*
+        S*ystem.out.println("---------------------------------------------");
         System.out.println("--graph.getVertexCount()"+graph.getVertexCount());
         System.out.println("--graph.getEdgeCount()"+graph.getEdgeCount());
         System.out.println(graph.toString());
         System.out.println("---------------------------------------------");
-        
+        */
         return graph;
     }
 
-    /**
-     * Returns the forum id from an edge label.
-     * @param edge
-     * @return
-     */
-    public String extractForumIdFromLabel(String edge) {
-        int iniUser = edge.indexOf(MavselVertex.USER_TOSTRING_INIT) + MavselVertex.USER_TOSTRING_INIT.length();
-        int lastUser = edge.indexOf(MavselVertex.USER_LABEL);
 
-        return edge.substring(iniUser, lastUser);
-    }
-
-    /**
-     * Returns the user id from an edge label.
-     * @param edge
-     * @return
-     */
-    public String extractUserIdFromLabel(String edge) {
-        int iniForum = edge.indexOf(MavselVertex.FORUM_TOSTRING_INIT) + MavselVertex.FORUM_TOSTRING_INIT.length();
-        int lastForum = edge.indexOf(MavselVertex.FORUM_LABEL);
-
-        return edge.substring(iniForum, lastForum);
-    }
     /**
      *
      * @param fileName

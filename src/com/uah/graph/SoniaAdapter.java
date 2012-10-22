@@ -21,7 +21,7 @@ public class SoniaAdapter {
     /**************************************************************************
     *                              PUBLIC METHODS
     ***************************************************************************/
-    public static void export(String fileName, Graph<MavselVertex,String> graph){
+    public static void export(String fileName, Graph<MavselVertex,MavselEdge> graph){
         StringBuffer file = new StringBuffer();
         try{
             
@@ -87,9 +87,9 @@ public class SoniaAdapter {
             }
             
             
-            Collection<String> edges = graph.getEdges();  
+            Collection<MavselEdge> edges = graph.getEdges();  
             
-            System.out.println("edges::"+edges.size());
+           // System.out.println("edges::"+edges.size());
             
             //Header -> relations columns
             file.append("\n");
@@ -101,21 +101,25 @@ public class SoniaAdapter {
             
             
             
-            for(String relation: edges){
+            for(MavselEdge relation: edges){
                 file.append('\n');
                 //System.out.println("Relation::"+relation);
                 
-                //FromId
-                file.append(extractForumId(relation));
+                //FromId                
+                file.append("UserId[");
+                file.append(relation.getUser().getId());                
+                file.append("]");
                 file.append('\t');
                 
-                //ToId
-                file.append(extractParticipantId(relation));
+                //ToId                
+                file.append("ForumId[");
+                file.append(relation.getForum().getId());                
+                file.append("]");
                 file.append('\t');
                 
                 //StrartTime
                 //lo guardo en el mismo string de edge                
-                file.append(extractStratTime(relation));
+                file.append(relation.getCreated_time());
                 file.append('\t');
                 
                 //EndTime
@@ -152,7 +156,7 @@ public class SoniaAdapter {
            e.printStackTrace();
         }
         
-        System.out.println("File SoNIA["+file.toString()+"] SoNIA format");
+        //System.out.println("File SoNIA["+file.toString()+"] SoNIA format");
     }
     
 
@@ -166,34 +170,37 @@ public class SoniaAdapter {
      * @param edgeDescription
      * @return 
      */
+    /*
     private static String extractStratTime(String edgeDescription){   
         int ini = edgeDescription.indexOf(MavselGraphManager.INIT_CREATEDTIME)+MavselGraphManager.INIT_CREATEDTIME.length(); 
         int fin = edgeDescription.indexOf(MavselGraphManager.END_CREATEDTIME); 
         
         return edgeDescription.substring(ini, fin);
-    }
+    }*/
     
     /**
      * 
      * @param edgeDescription
      * @return 
      */
+    /*
     private static String extractForumId(String edgeDescription){
         int ini = edgeDescription.indexOf(MavselVertex.FORUM_TOSTRING_INIT)+MavselVertex.FORUM_TOSTRING_INIT.length(); 
         int fin = edgeDescription.indexOf(MavselVertex.FORUM_LABEL); 
         
         return edgeDescription.substring(ini, fin);
-    }
+    }*/
     
     /**
      * 
      * @param edgeDescription
      * @return 
      */
+    /*
     private static String extractParticipantId(String edgeDescription){        
         int ini = edgeDescription.indexOf(MavselVertex.USER_TOSTRING_INIT)+MavselVertex.USER_TOSTRING_INIT.length(); 
         int fin = edgeDescription.indexOf(MavselVertex.USER_LABEL); 
 
         return edgeDescription.substring(ini, fin);
-    }
+    }*/
 }

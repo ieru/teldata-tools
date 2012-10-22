@@ -43,7 +43,7 @@ public class CourseMoodleDAO extends DAO{
                 course.setShortname(rs.getString("shortname"));
                 course.setSummary(rs.getString("summary"));               
             }   else{
-                System.out.println("Course with ID="+idCourse+" doesn`t exist.");
+                
                 return null;
             }         
         }catch (Exception e){

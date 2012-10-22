@@ -6,6 +6,7 @@ package com.uah.items;
 
 
 import com.uah.exceptions.OperationNotSupportedException;
+import com.uah.graph.MavselEdge;
 import com.uah.graph.MavselVertex;
 import edu.uci.ics.jung.graph.Graph;
 import java.sql.Connection;
@@ -50,9 +51,9 @@ public interface LMS{
     
     public abstract Participant getParticipant(String idParticipant);
 
-    public abstract Graph<MavselVertex, String> getParticipantForumGraph(Course course);
+    public abstract Graph<MavselVertex, MavselEdge> getParticipantForumGraph(Course course);
 
-    public abstract Graph<MavselVertex, String> getParticipantForumGraph(List<Forum>forums);
+    public abstract Graph<MavselVertex, MavselEdge> getParticipantForumGraph(List<Forum>forums);
      
     public abstract void getForumRaitingInRFile(String filename) throws OperationNotSupportedException;
     

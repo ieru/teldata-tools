@@ -8,6 +8,7 @@ import com.uah.dao.dokeos.*;
 import com.uah.dto.dokeos.*;
 import com.uah.exceptions.ConnectionParametersException;
 import com.uah.exceptions.OperationNotSupportedException;
+import com.uah.graph.MavselEdge;
 import com.uah.graph.MavselGraphManager;
 import com.uah.graph.MavselVertex;
 import com.uah.items.*;
@@ -384,7 +385,7 @@ public class DokeosLMS extends DataBaseManagement implements LMS {
      * @return
      */
     @Override
-    public Graph<MavselVertex, String> getParticipantForumGraph(Course course) {
+    public Graph<MavselVertex, MavselEdge> getParticipantForumGraph(Course course) {
         MavselGraphManager gManager = new MavselGraphManager();
 
         return gManager.getParticipantForumGraph(course, this);
@@ -396,7 +397,7 @@ public class DokeosLMS extends DataBaseManagement implements LMS {
      * @return
      */
     @Override
-    public Graph<MavselVertex, String> getParticipantForumGraph(List<Forum> forums) {
+    public Graph<MavselVertex, MavselEdge> getParticipantForumGraph(List<Forum> forums) {
         MavselGraphManager gManager = new MavselGraphManager();
 
         return gManager.getParticipantForumGraph(forums, this);

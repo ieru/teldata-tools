@@ -43,7 +43,7 @@ public class DiscussionMoodleDAO  extends DAO {
                 discussion.setIdGroup(rs.getString("groupid"));                
                 discussion.setIdUser(rs.getString("userid"));
                 discussion.setTitle(rs.getString("name"));
-                System.out.println(sqlOrder);
+                
                 threads.add(discussion);                
             }               
         }catch (Exception e){
@@ -76,7 +76,6 @@ public class DiscussionMoodleDAO  extends DAO {
                 discussion.setIdGroup(rs.getString("groupid"));                
                 discussion.setIdUser(rs.getString("userid"));
                 discussion.setTitle(rs.getString("name"));
-                System.out.println(sqlOrder);
                 threads.add(discussion);                
             }               
         }catch (Exception e){
@@ -107,7 +106,7 @@ public class DiscussionMoodleDAO  extends DAO {
                 discussion.setIdGroup(rs.getString("groupid"));                
                 discussion.setIdUser(rs.getString("userid"));
                 discussion.setTitle(rs.getString("name"));
-                System.out.println(sqlOrder);                        
+                                        
             }               
         }catch (Exception e){
             e.printStackTrace();

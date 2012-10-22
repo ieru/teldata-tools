@@ -45,7 +45,7 @@ public class CourseDokeosDAO extends DAO{
                 course.setDescription(rs.getString("description"));    
 
             }   else{
-                System.out.println("Course with ID="+idCourse+" doesn`t exist.");
+                
                 return null;
             }         
         }catch (Exception e){

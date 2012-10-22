@@ -38,7 +38,7 @@ public class PostRatingMoodleDAO  extends DAO{
                     + " AND mdl_role_assignments.userid = mdl_user.id"
                     + " AND mdl_role_assignments.roleid = mdl_role.id"
                     + " AND mdl_forum.id = mdl_forum_discussions.forum";        
-            System.out.println(sqlOrder);
+            
             statement = connection.createStatement();
             rs = statement.executeQuery( sqlOrder );
             
@@ -85,7 +85,7 @@ public class PostRatingMoodleDAO  extends DAO{
                     + " AND mdl_role_assignments.userid = mdl_user.id"
                     + " AND mdl_role_assignments.roleid = mdl_role.id"
                     + " AND mdl_forum.id = mdl_forum_discussions.forum";        
-            System.out.println(sqlOrder);
+            
             statement = connection.createStatement();
             rs = statement.executeQuery( sqlOrder );
             

@@ -8,6 +8,7 @@ import com.uah.dao.moodle.*;
 import com.uah.dto.modle.*;
 import com.uah.exceptions.ConnectionParametersException;
 import com.uah.exceptions.OperationNotSupportedException;
+import com.uah.graph.MavselEdge;
 import com.uah.graph.MavselGraphManager;
 import com.uah.graph.MavselVertex;
 import com.uah.items.*;
@@ -382,7 +383,7 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
      * @return
      */
     @Override
-    public Graph<MavselVertex, String> getParticipantForumGraph(Course course) {
+    public Graph<MavselVertex, MavselEdge> getParticipantForumGraph(Course course) {
         graphManager = new MavselGraphManager();
 
         return graphManager.getParticipantForumGraph(course, this);
@@ -394,7 +395,7 @@ public class MoodleLMS extends DataBaseManagement implements LMS {
      * @return
      */
     @Override
-    public Graph<MavselVertex, String> getParticipantForumGraph(List<Forum> forums) {
+    public Graph<MavselVertex, MavselEdge> getParticipantForumGraph(List<Forum> forums) {
         graphManager = new MavselGraphManager();
 
         return graphManager.getParticipantForumGraph(forums, this);
