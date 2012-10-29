@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module: Mavsel
+OpenIDE-Module-Localizing-Bundle: Mavsel/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+
