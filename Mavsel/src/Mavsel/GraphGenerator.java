@@ -4,6 +4,7 @@
  */
 package Mavsel;
 
+import com.uah.graph.MavselEdge;
 import com.uah.graph.MavselGraphManager;
 import com.uah.graph.MavselVertex;
 import edu.uci.ics.jung.graph.Graph;
@@ -26,25 +27,23 @@ import org.openide.util.lookup.ServiceProvider;
 public class GraphGenerator implements Generator{
     protected ProgressTicket progress;
     protected boolean cancel = false;
-    private Graph<MavselVertex, String> graph;
+    private Graph<MavselVertex, MavselEdge> graph;
 
     @Override
     public void generate(ContainerLoader container) {
-        // create nodes
-      
-        Collection<String> edges = graph.getEdges();
-        Collection<MavselVertex> vertexs = graph.getVertices();
-        
-        //ArrayList<MavselVertex> forumVertex = new ArrayList();
-        //ArrayList<MavselVertex> userVertex = new ArrayList();
-        
+               
+        //forumTable and userTable control vertex object in the graph
         Map<String, NodeDraft> forumTable = new HashMap<String, NodeDraft>();
         Map<String, NodeDraft> userTable =  new HashMap<String, NodeDraft>();
         
+        // edgeTable map store edges of the graph for checking duplicate relations
+        // In MAVSEL are not duplicate because generation time (they are different posts indeed)
+        // but in Ghepi graphs we need to check this kind of edges.        
+        Map<String, MavselEdge> edgeTable =  new HashMap<String, MavselEdge>();
         
-        System.out.println("graph.getVertexCount()--->" +graph.getVertexCount());
+        System.out.println("graph --> " +graph.toString());
         
-        for(MavselVertex vertex:vertexs){
+        for(MavselVertex vertex: graph.getVertices()){
             NodeDraft newNode;
             StringBuilder nodeLabel = new StringBuilder();
             
@@ -76,74 +75,30 @@ public class GraphGenerator implements Generator{
             container.addNode(newNode);
         }
         
-        MavselGraphManager graphManager = new MavselGraphManager();
+
         EdgeDraft e;
-        System.out.println("edges size--->"+edges.size());
-        for(String edge: edges){
+        System.out.println("edges size--->"+graph.getEdges().size());
+        for(MavselEdge edge: graph.getEdges()){
            
-            String nodeUserId = graphManager.extractUserIdFromLabel(edge);
-            String nodeForumId = graphManager.extractForumIdFromLabel(edge);
             
-            System.out.println("nodeUserId--->" +nodeUserId);
-            System.out.println("nodeForumId--->"+nodeForumId);
           
-            // create edge
-            e = container.factory().newEdgeDraft();
-            e.setSource(forumTable.get(nodeForumId));
-            e.setTarget(userTable.get(nodeUserId));
+            //Check if edge is duplicate or not
+            if(!edgeTable.containsKey(edge.toString())){
+                // create edge
+                System.out.println("nodeUserId--->" +edge.getUser().getId());
+                System.out.println("nodeForumId--->"+edge.getForum().getId());
+                System.out.println("edge.toString()--->"+edge.toString());
+                e = container.factory().newEdgeDraft();
+                e.setSource(userTable.get(edge.getUser().getId()));
+                e.setTarget(forumTable.get(edge.getForum().getId()));
+                                
+
+                // fill in the graph            
+                container.addEdge(e);
+
+                edgeTable.put(edge.toString(), edge);
+            }
             
-            // fill in the graph            
-            container.addEdge(e);
-            
-            /*
-            String forum = graphManager.extractForumLabel(edge);
-            System.out.println("forum--->"+forum);
-           ///Vertex-ForumId[3] ForumLabel:: Foro con puntuaciones || Vertex-UserId[2] UserLabel:: admin || CREATED TIME::[1332330665]::
-            int fisrt = edge.indexOf(graphManager.SEPARATOR);
-            int last = edge.lastIndexOf(graphManager.SEPARATOR);
-            System.out.println("separator--->"+graphManager.SEPARATOR+"<--");
-            System.out.println("fisrt--->"+fisrt);
-            System.out.println("last--->"+last);
-            
-            String contentNode1 = edge.substring(0,fisrt);
-            String contentNode2 = edge.substring(fisrt+graphManager.SEPARATOR.length(),last);
-            
-            System.out.println("contentNode1Forum--->"+contentNode1);
-            System.out.println("contentNode2Forum--->"+contentNode2);
- 
-            ///
-            //System.out.println("    forum->"+forum);
-            
-            /*
-            String user = graphManager.extractUserLabel(edge);
-            System.out.println("    user->"+edge);
-            fisrt = edge.indexOf(graphManager.SEPARATOR);
-            last = edge.lastIndexOf(graphManager.SEPARATOR);
-            contentNode1 = edge.substring(0,last);
-            contentNode2 = edge.substring(fisrt+graphManager.SEPARATOR.length(),last);
-            
-            System.out.println("contentNode1User--->"+contentNode1);
-            System.out.println("contentNode2User--->"+contentNode2);
-            
-            */
-            /*
-            // create nodes
-            n1 = container.factory().newNodeDraft();
-            n2 = container.factory().newNodeDraft();
-            
-            // set node labels
-            n1.setLabel(contentNode1);
-            n2.setLabel(contentNode2);
-            
-            // create edge
-            e = container.factory().newEdgeDraft();
-            e.setSource(n1);
-            e.setTarget(n2);
-        
-            // fill in the graph
-            container.addNode(n1);
-            container.addNode(n2);
-            container.addEdge(e);*/
         }
            
     }
@@ -169,7 +124,7 @@ public class GraphGenerator implements Generator{
         this.progress = progressTicket;
     }
     
-    public void setGraph(Graph<MavselVertex, String> graph){
+    public void setGraph(Graph<MavselVertex, MavselEdge> graph){
         this.graph = graph;
     }
     

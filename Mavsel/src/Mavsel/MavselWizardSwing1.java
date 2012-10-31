@@ -5,6 +5,7 @@
 package Mavsel;
 
 import java.awt.TextField;
+import javax.swing.JComboBox;
 import javax.swing.JPasswordField;
 
 
@@ -40,6 +41,10 @@ public class MavselWizardSwing1 extends javax.swing.JPanel {
         jPasswordFieldPassword = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabelTitle = new javax.swing.JLabel();
+        platformComboBox = new javax.swing.JComboBox();
+        labelCourseID = new java.awt.Label();
+        labelPassword2 = new java.awt.Label();
+        textCourseId = new java.awt.TextField();
 
         labelURL.setText(org.openide.util.NbBundle.getMessage(MavselWizardSwing1.class, "MavselWizardSwing1.labelURL.text")); // NOI18N
 
@@ -67,6 +72,19 @@ public class MavselWizardSwing1 extends javax.swing.JPanel {
         jLabelTitle.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelTitle.setText(org.openide.util.NbBundle.getMessage(MavselWizardSwing1.class, "MavselWizardSwing1.jLabelTitle.text")); // NOI18N
 
+        platformComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Moodle", "Dokeos" }));
+        platformComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                platformComboBoxActionPerformed(evt);
+            }
+        });
+
+        labelCourseID.setText(org.openide.util.NbBundle.getMessage(MavselWizardSwing1.class, "MavselWizardSwing1.labelCourseID.text")); // NOI18N
+
+        labelPassword2.setText(org.openide.util.NbBundle.getMessage(MavselWizardSwing1.class, "MavselWizardSwing1.labelPassword2.text")); // NOI18N
+
+        textCourseId.setText(org.openide.util.NbBundle.getMessage(MavselWizardSwing1.class, "MavselWizardSwing1.textCourseId.text")); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,21 +95,31 @@ public class MavselWizardSwing1 extends javax.swing.JPanel {
                     .addComponent(labelURL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelPort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelCourseID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textFieldURL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textFieldPort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textFieldUser, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                    .addComponent(jPasswordFieldPassword))
-                .addGap(186, 186, 186))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(platformComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(textCourseId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textFieldURL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textFieldPort, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textFieldUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                            .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(186, 186, 186))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jSeparator1)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(201, 201, 201)
-                .addComponent(jLabelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jSeparator1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(201, 201, 201)
+                        .addComponent(jLabelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -114,18 +142,33 @@ public class MavselWizardSwing1 extends javax.swing.JPanel {
                     .addComponent(textFieldUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(platformComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelCourseID, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textCourseId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         labelURL.getAccessibleContext().setAccessibleName(org.openide.util.NbBundle.getMessage(MavselWizardSwing1.class, "MavselWizardSwing1.label1.AccessibleContext.accessibleName")); // NOI18N
+        labelCourseID.getAccessibleContext().setAccessibleName(org.openide.util.NbBundle.getMessage(MavselWizardSwing1.class, "MavselWizardSwing1.labelCourseID.AccessibleContext.accessibleName")); // NOI18N
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPasswordFieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordFieldPasswordActionPerformed
+
+    private void platformComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_platformComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_platformComboBoxActionPerformed
 
     public void unsetup(MavselSpigot importer) {
         //Configure the importer
@@ -134,7 +177,9 @@ public class MavselWizardSwing1 extends javax.swing.JPanel {
         importer.setUrl(textFieldURL.getText());
         importer.setPort(textFieldPort.getText());
         importer.setUser(textFieldUser.getText());
-        importer.setPassword(jPasswordFieldPassword.getPassword().toString());
+        importer.setPassword(jPasswordFieldPassword.getText());
+        importer.setPlatform(platformComboBox.getSelectedItem().toString());
+        importer.setCourse_id(textCourseId.getText());
     }
 
     public JPasswordField getjPasswordFieldPassword() {
@@ -153,6 +198,10 @@ public class MavselWizardSwing1 extends javax.swing.JPanel {
         return textFieldUser;
     }
     
+    public JComboBox getPlatformComboBox(){
+        return platformComboBox;
+    }
+    
     @Override
     public String getName() {
  
@@ -163,10 +212,14 @@ public class MavselWizardSwing1 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JPasswordField jPasswordFieldPassword;
     private javax.swing.JSeparator jSeparator1;
+    private java.awt.Label labelCourseID;
     private java.awt.Label labelPassword;
+    private java.awt.Label labelPassword2;
     private java.awt.Label labelPort;
     private java.awt.Label labelURL;
     private java.awt.Label labelUser;
+    private javax.swing.JComboBox platformComboBox;
+    private java.awt.TextField textCourseId;
     private java.awt.TextField textFieldPort;
     private java.awt.TextField textFieldURL;
     private java.awt.TextField textFieldUser;

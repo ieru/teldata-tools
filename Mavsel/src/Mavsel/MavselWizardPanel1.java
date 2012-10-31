@@ -52,7 +52,9 @@ public class MavselWizardPanel1 implements WizardDescriptor.Panel {
         ((WizardDescriptor) settings).putProperty("name", ((MavselWizardSwing1)getComponent()).getTextFieldURL().getText());
         ((WizardDescriptor) settings).putProperty("port", ((MavselWizardSwing1)getComponent()).getTextFieldPort().getText());
         ((WizardDescriptor) settings).putProperty("user", ((MavselWizardSwing1)getComponent()).getTextFieldUser().getText());
+        ((WizardDescriptor) settings).putProperty("platform", ((MavselWizardSwing1)getComponent()).getPlatformComboBox().getSelectedItem());
         ((WizardDescriptor) settings).putProperty("password", ((MavselWizardSwing1)getComponent()).getjPasswordFieldPassword().getPassword().toString());
+        ((WizardDescriptor) settings).putProperty("course_id", ((MavselWizardSwing1)getComponent()).getTextFieldUser().getText());
     }
  
     @Override
