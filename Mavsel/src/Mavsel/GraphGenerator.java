@@ -5,16 +5,15 @@
 package Mavsel;
 
 import com.uah.graph.MavselEdge;
-import com.uah.graph.MavselGraphManager;
 import com.uah.graph.MavselVertex;
 import edu.uci.ics.jung.graph.Graph;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import org.gephi.io.generator.spi.Generator;
+import org.gephi.io.generator.spi.GeneratorUI;
 import org.gephi.io.importer.api.ContainerLoader;
 import org.gephi.io.importer.api.EdgeDraft;
 import org.gephi.io.importer.api.NodeDraft;
-import org.gephi.io.generator.spi.Generator;
-import org.gephi.io.generator.spi.GeneratorUI;
-
 import org.gephi.utils.progress.ProgressTicket;
 import org.openide.util.lookup.ServiceProvider;
 
@@ -41,8 +40,6 @@ public class GraphGenerator implements Generator{
         // but in Ghepi graphs we need to check this kind of edges.        
         Map<String, MavselEdge> edgeTable =  new HashMap<String, MavselEdge>();
         
-        System.out.println("graph --> " +graph.toString());
-        
         for(MavselVertex vertex: graph.getVertices()){
             NodeDraft newNode;
             StringBuilder nodeLabel = new StringBuilder();
@@ -58,6 +55,7 @@ public class GraphGenerator implements Generator{
                 // set node labels
                 newNode.setLabel(nodeLabel.toString());
                 
+                //add to forum table to control duplicate values
                 forumTable.put(vertex.getId(),newNode);
             }else if (vertex.getType()==MavselVertex.IS_USER){
                 
@@ -67,40 +65,32 @@ public class GraphGenerator implements Generator{
                 // set node labels
                 newNode.setLabel(nodeLabel.toString());
                 
+                //add to user table to control duplicate values
                 userTable.put(vertex.getId(),newNode);
             }
-            
-            System.out.println("newNode--->" +nodeLabel);
+
             // fill in the graph
             container.addNode(newNode);
-        }
-        
+        }        
 
         EdgeDraft e;
-        System.out.println("edges size--->"+graph.getEdges().size());
-        for(MavselEdge edge: graph.getEdges()){
-           
-            
+
+        for(MavselEdge edge: graph.getEdges()){                   
           
             //Check if edge is duplicate or not
             if(!edgeTable.containsKey(edge.toString())){
                 // create edge
-                System.out.println("nodeUserId--->" +edge.getUser().getId());
-                System.out.println("nodeForumId--->"+edge.getForum().getId());
-                System.out.println("edge.toString()--->"+edge.toString());
                 e = container.factory().newEdgeDraft();
                 e.setSource(userTable.get(edge.getUser().getId()));
                 e.setTarget(forumTable.get(edge.getForum().getId()));
                                 
-
                 // fill in the graph            
                 container.addEdge(e);
 
+                //add to edge table to control duplicate values
                 edgeTable.put(edge.toString(), edge);
-            }
-            
-        }
-           
+            }            
+        }           
     }
     
     @Override

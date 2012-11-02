@@ -172,8 +172,6 @@ public class MavselWizardSwing1 extends javax.swing.JPanel {
 
     public void unsetup(MavselSpigot importer) {
         //Configure the importer
-        //Example
-        //importer.setOption(optionCheckbox.isSelected());
         importer.setUrl(textFieldURL.getText());
         importer.setPort(textFieldPort.getText());
         importer.setUser(textFieldUser.getText());

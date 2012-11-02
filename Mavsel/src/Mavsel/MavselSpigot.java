@@ -4,11 +4,10 @@
  */
 package Mavsel;
 
-import com.uah.graph.MavselVertex;
 import com.uah.graph.MavselEdge;
-import com.uah.graph.PajekAdapter;
-import com.uah.graph.SoniaAdapter;
-import com.uah.items.*;
+import com.uah.graph.MavselVertex;
+import com.uah.items.Course;
+import com.uah.items.LMS;
 import com.uah.main.dokeos.DokeosLMS;
 import com.uah.main.moodle.MoodleLMS;
 import edu.uci.ics.jung.graph.Graph;
@@ -71,10 +70,6 @@ public class MavselSpigot implements SpigotImporter, LongTask {
         Graph<MavselVertex, MavselEdge> graph = myLMS.getParticipantForumGraph(course);
 
 
-        /*******************************************************************/
-        /*******************************************************************/
-        /*******************************************************************/
-        /*******************************************************************/
         /*******************************************************************/
         /*******************************************************************/
         GraphGenerator graphGenerator = new GraphGenerator();
