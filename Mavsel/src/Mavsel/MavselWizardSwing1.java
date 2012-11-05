@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Mavsel;
 
 import java.awt.TextField;
@@ -11,7 +7,8 @@ import javax.swing.JPasswordField;
 
 /**
  *
- * @author ie
+ * @author Pablo Sicilia
+ * @version Gephi Mavsel module 1.0
  */
 public class MavselWizardSwing1 extends javax.swing.JPanel {
 

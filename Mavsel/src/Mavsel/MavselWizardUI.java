@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Mavsel;
 
 import java.awt.Component;
@@ -15,7 +11,8 @@ import org.openide.util.lookup.ServiceProvider;
 
 /**
  *
- * @author ie
+ * @author Pablo Sicilia
+ * @version Gephi Mavsel module 1.0
  */
 @ServiceProvider(service = ImporterWizardUI.class)
 public class MavselWizardUI implements ImporterWizardUI{
@@ -40,8 +37,7 @@ public class MavselWizardUI implements ImporterWizardUI{
     public Panel[] getPanels() {
         if (panels == null) {
             panels = new WizardDescriptor.Panel[]{
-                        new MavselWizardPanel1()//,
-                        //new MavselWizardPanel2()
+                        new MavselWizardPanel1()                        
                     };
         
         String[] steps = new String[panels.length];

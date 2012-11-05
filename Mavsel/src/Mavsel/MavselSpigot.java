@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Mavsel;
 
 import com.uah.graph.MavselEdge;
@@ -11,6 +7,7 @@ import com.uah.items.LMS;
 import com.uah.main.dokeos.DokeosLMS;
 import com.uah.main.moodle.MoodleLMS;
 import edu.uci.ics.jung.graph.Graph;
+import javax.swing.JOptionPane;
 import org.gephi.io.importer.api.ContainerLoader;
 import org.gephi.io.importer.api.Report;
 import org.gephi.io.importer.spi.SpigotImporter;
@@ -19,7 +16,8 @@ import org.gephi.utils.progress.ProgressTicket;
 
 /**
  *
- * @author ie
+ * @author Pablo Sicilia
+ * @version Gephi Mavsel module 1.0
  */
 public class MavselSpigot implements SpigotImporter, LongTask {
 
@@ -55,29 +53,28 @@ public class MavselSpigot implements SpigotImporter, LongTask {
             myLMS = new MoodleLMS();
         }else if(platform.equalsIgnoreCase("doekos")){
             myLMS = new DokeosLMS();
+            
         }
           
-        //Configure MAVSEL and connect with data base
+        
         try {
+            //Configure MAVSEL and connect with data base
             myLMS.configureLMS(url, port, platform, user, password);
             course = myLMS.getCourse(course_id);
+            
+            //Generate graph
+            Graph<MavselVertex, MavselEdge> graph = myLMS.getParticipantForumGraph(course);
+            GraphGenerator graphGenerator = new GraphGenerator();
+            graphGenerator.setGraph(graph);
+            graphGenerator.generate(container);
+        
         } catch (Exception e) {
             System.out.println("-error incorrect data-");
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Connection failed. Please, check your MAVSEL database configuration parameters", "Connection error", JOptionPane.ERROR_MESSAGE);
+            cancel = true;
         }
        
-        
-        Graph<MavselVertex, MavselEdge> graph = myLMS.getParticipantForumGraph(course);
-
-
-        /*******************************************************************/
-        /*******************************************************************/
-        GraphGenerator graphGenerator = new GraphGenerator();
-        graphGenerator.setGraph(graph);
-        graphGenerator.generate(container);
-        
-
-
         return !cancel;
     }
 

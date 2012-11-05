@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Mavsel;
 
 import org.gephi.io.importer.spi.SpigotImporter;
@@ -10,7 +6,8 @@ import org.openide.util.lookup.ServiceProvider;
 
 /**
  *
- * @author ie
+ * @author Pablo Sicilia
+ * @version Gephi Mavsel module 1.0
  */
 @ServiceProvider(service = SpigotImporterBuilder.class)
 public class MavselSpigotBuilder implements SpigotImporterBuilder {

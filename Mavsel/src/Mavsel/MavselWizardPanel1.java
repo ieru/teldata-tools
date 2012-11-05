@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Mavsel;
 
 import java.awt.Component;
@@ -12,7 +8,8 @@ import org.openide.util.HelpCtx;
 
 /**
  *
- * @author ie
+ * @author Pablo Sicilia
+ * @version Gephi Mavsel module 1.0
  */
 public class MavselWizardPanel1 implements WizardDescriptor.Panel {
     
