@@ -80,7 +80,7 @@ public class DokeosLMS extends DataBaseManagement implements LMS {
      */
     @Override
     public void configureLMS(String dataBaseURL, String dataBasePort,
-            String dataBaseName, String dataBaseUser, String dataBaseUserPass) throws ConnectionParametersException {
+            String dataBaseName, String dataBaseUser, String dataBaseUserPass) throws ConnectionParametersException,Exception {
 
         // Saving database`s parameters
         DataBaseConnectionParameters dbConnectionParams = new DataBaseConnectionParameters(dataBaseURL, dataBasePort,

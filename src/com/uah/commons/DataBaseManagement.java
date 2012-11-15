@@ -26,7 +26,7 @@ public class DataBaseManagement {
      * 
      * @param dbConnectionParams 
      */  
-    public void initDataBaseConnection(DataBaseConnectionParameters dbConnectionParams){
+    public void initDataBaseConnection(DataBaseConnectionParameters dbConnectionParams) throws Exception{
         
         try{               
             // Configuring database
@@ -41,6 +41,7 @@ public class DataBaseManagement {
             
         }catch( Exception e ) {
             e.printStackTrace();
+            throw e;
         }              
     }
         
