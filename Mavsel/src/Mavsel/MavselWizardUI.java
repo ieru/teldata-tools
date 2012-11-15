@@ -71,7 +71,7 @@ public class MavselWizardUI implements ImporterWizardUI{
  
     @Override
     public String getDescription() {
-        return "This connector imports data from an elearning platform using the MAVSEL extractor library.\n Also transforms the imported data into a Gephi graph.";
+        return "This connector imports data from an e-learning platform using the MAVSEL extractor library.\nAlso transforms the imported data into a Gephi graph.";
     }
  
     @Override
