@@ -74,8 +74,7 @@ public class MavselWizardPanel2 implements WizardDescriptor.Panel{
                         
             ((MavselWizardSwing2)component).setComboBoxValues(courses);
                   
-        } catch (Exception e) {     
-            
+        } catch (Exception e) {               
             
             JOptionPane.showMessageDialog(null, "Connection failed. Please, check your MAVSEL database configuration parameters", "Connection error", JOptionPane.ERROR_MESSAGE);
 
