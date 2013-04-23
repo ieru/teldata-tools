@@ -88,8 +88,8 @@ public class GraphGenerator implements Generator{
             if (vertex.getType()==MavselVertex.IS_FORUM){
                
                 nodeLabel.append("Forum[");
-                nodeLabel.append(vertex.getId()+"]");
-                        
+                nodeLabel.append(vertex.getId()+": "+vertex.getDescription()+"]");
+            
                 // set node labels
                 newNode.setLabel(nodeLabel.toString());
                 
@@ -98,7 +98,7 @@ public class GraphGenerator implements Generator{
             }else if (vertex.getType()==MavselVertex.IS_USER){
                 
                 nodeLabel.append("User[");
-                nodeLabel.append(vertex.getId()+"]");
+                nodeLabel.append(vertex.getId()+": "+vertex.getDescription()+"]");
                         
                 // set node labels
                 newNode.setLabel(nodeLabel.toString());

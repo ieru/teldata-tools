@@ -66,28 +66,21 @@ public class MavselSpigot implements SpigotImporter, LongTask {
     private Report report;
     private ProgressTicket progressTicket;
     private boolean cancel = false;
-    private String url;
-    private String port;
-    private String user;
-    private String password;
-    private String platform;
-    private String course_id;
+    private String url = "";
+    private String port = "";
+    private String user = "";
+    private String password = "";
+    private String platform = "";
+    private String courseName = "";
+
 
     @Override
     public boolean execute(ContainerLoader loader) {
         this.container = loader;
         this.report = new Report();
 
-        System.out.println("MAVSEL url-" + url);
-        System.out.println("MAVSEL port-" + port);
-        System.out.println("MAVSEL user-" + user);
-        System.out.println("MAVSEL password-" + password);
-        System.out.println("MAVSEL platform-" + platform);
-        System.out.println("MAVSEL course_id-" + course_id);
-        
 
-        
-        //Select the e-learning platform
+        //Select the e-learning platform         
         LMS myLMS = null;
         Course course = null;
         if(platform.equalsIgnoreCase("moodle")){
@@ -97,11 +90,11 @@ public class MavselSpigot implements SpigotImporter, LongTask {
             
         }
           
-        
         try {
             //Configure MAVSEL and connect with data base
             myLMS.configureLMS(url, port, platform, user, password);
-            course = myLMS.getCourse(course_id);
+            String idCourse = courseName.substring(1, courseName.indexOf("]"));
+            course = myLMS.getCourse(idCourse);
             
             //Generate graph
             Graph<MavselVertex, MavselEdge> graph = myLMS.getParticipantForumGraph(course);
@@ -109,13 +102,11 @@ public class MavselSpigot implements SpigotImporter, LongTask {
             graphGenerator.setGraph(graph);
             graphGenerator.generate(container);
         
-        } catch (Exception e) {
-            System.out.println("-error incorrect data-");
-            e.printStackTrace();
+        } catch (Exception e) {                       
             JOptionPane.showMessageDialog(null, "Connection failed. Please, check your MAVSEL database configuration parameters", "Connection error", JOptionPane.ERROR_MESSAGE);
             cancel = true;
         }
-       
+
         return !cancel;
     }
 
@@ -180,13 +171,15 @@ public class MavselSpigot implements SpigotImporter, LongTask {
         this.platform = platform;
     }
 
-    public String getCourse_id() {
-        return course_id;
+    public String getCourseName() {
+        return courseName;
     }
 
-    public void setCourse_id(String course_id) {
-        this.course_id = course_id;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
+
 
         
+    
 }

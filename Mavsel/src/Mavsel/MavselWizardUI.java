@@ -58,7 +58,7 @@ import org.openide.util.lookup.ServiceProvider;
 @ServiceProvider(service = ImporterWizardUI.class)
 public class MavselWizardUI implements ImporterWizardUI{
     private Panel[] panels = null;
- 
+    
     @Override
     public String getDisplayName() {
         return "Mavsel Importer";
@@ -78,7 +78,8 @@ public class MavselWizardUI implements ImporterWizardUI{
     public Panel[] getPanels() {
         if (panels == null) {
             panels = new WizardDescriptor.Panel[]{
-                        new MavselWizardPanel1()                        
+                        new MavselWizardPanel1(),
+                        new MavselWizardPanel2()                        
                     };
         
         String[] steps = new String[panels.length];
@@ -101,8 +102,7 @@ public class MavselWizardUI implements ImporterWizardUI{
                     jc.putClientProperty("WizardPanel_contentNumbered", Boolean.TRUE);
                 }
             }
-        }
-        
+        }        
         return panels;
     }
     
@@ -111,15 +111,20 @@ public class MavselWizardUI implements ImporterWizardUI{
     public void setup(Panel panel) {
         //Before opening the wizard
     }
- 
+    
     @Override
     public void unsetup(SpigotImporter importer, Panel panel) {
-        //When the wizard has been closed
+        //When the wizard has been closed     
+        try{
+        System.out.println(panels.length);
+        //MavselWizardSwing2 
+        ((MavselWizardSwing1) ((Panel) panels[0]).getComponent()).unsetup((MavselSpigot)importer);        
+        ((MavselWizardSwing2) ((Panel) panels[1]).getComponent()).unsetup((MavselSpigot)importer);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         
-        ((MavselWizardSwing1) ((Panel) panels[0]).getComponent()).unsetup((MavselSpigot)importer);
-        //((MavselWizardSwing2) ((Panel) panels[1]).getComponent()).unsetup((MavselSpigot)importer);
- 
-        panels = null;
+        //panels = null;
     }
  
     @Override

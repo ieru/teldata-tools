@@ -53,7 +53,7 @@ import org.openide.util.HelpCtx;
  * @version Gephi Mavsel module 1.0
  */
 public class MavselWizardPanel1 implements WizardDescriptor.Panel {
-    
+        
     
     
     
@@ -91,8 +91,8 @@ public class MavselWizardPanel1 implements WizardDescriptor.Panel {
         ((WizardDescriptor) settings).putProperty("port", ((MavselWizardSwing1)getComponent()).getTextFieldPort().getText());
         ((WizardDescriptor) settings).putProperty("user", ((MavselWizardSwing1)getComponent()).getTextFieldUser().getText());
         ((WizardDescriptor) settings).putProperty("platform", ((MavselWizardSwing1)getComponent()).getPlatformComboBox().getSelectedItem());
-        ((WizardDescriptor) settings).putProperty("password", ((MavselWizardSwing1)getComponent()).getjPasswordFieldPassword().getPassword().toString());
-        ((WizardDescriptor) settings).putProperty("course_id", ((MavselWizardSwing1)getComponent()).getTextFieldUser().getText());
+        ((WizardDescriptor) settings).putProperty("password", ((MavselWizardSwing1)getComponent()).getjPasswordFieldPassword().getText());
+  
     }
  
     @Override

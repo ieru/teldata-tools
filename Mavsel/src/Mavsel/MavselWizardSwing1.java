@@ -80,9 +80,7 @@ public class MavselWizardSwing1 extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabelTitle = new javax.swing.JLabel();
         platformComboBox = new javax.swing.JComboBox();
-        labelCourseID = new java.awt.Label();
         labelPassword2 = new java.awt.Label();
-        textCourseId = new java.awt.TextField();
 
         labelURL.setText(org.openide.util.NbBundle.getMessage(MavselWizardSwing1.class, "MavselWizardSwing1.labelURL.text")); // NOI18N
 
@@ -117,11 +115,7 @@ public class MavselWizardSwing1 extends javax.swing.JPanel {
             }
         });
 
-        labelCourseID.setText(org.openide.util.NbBundle.getMessage(MavselWizardSwing1.class, "MavselWizardSwing1.labelCourseID.text")); // NOI18N
-
         labelPassword2.setText(org.openide.util.NbBundle.getMessage(MavselWizardSwing1.class, "MavselWizardSwing1.labelPassword2.text")); // NOI18N
-
-        textCourseId.setText(org.openide.util.NbBundle.getMessage(MavselWizardSwing1.class, "MavselWizardSwing1.textCourseId.text")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -134,7 +128,6 @@ public class MavselWizardSwing1 extends javax.swing.JPanel {
                     .addComponent(labelPort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelCourseID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,7 +136,6 @@ public class MavselWizardSwing1 extends javax.swing.JPanel {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(textCourseId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(textFieldURL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(textFieldPort, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(textFieldUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
@@ -189,15 +181,10 @@ public class MavselWizardSwing1 extends javax.swing.JPanel {
                         .addComponent(labelPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(labelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(labelCourseID, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textCourseId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         labelURL.getAccessibleContext().setAccessibleName(org.openide.util.NbBundle.getMessage(MavselWizardSwing1.class, "MavselWizardSwing1.label1.AccessibleContext.accessibleName")); // NOI18N
-        labelCourseID.getAccessibleContext().setAccessibleName(org.openide.util.NbBundle.getMessage(MavselWizardSwing1.class, "MavselWizardSwing1.labelCourseID.AccessibleContext.accessibleName")); // NOI18N
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPasswordFieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldPasswordActionPerformed
@@ -215,7 +202,7 @@ public class MavselWizardSwing1 extends javax.swing.JPanel {
         importer.setUser(textFieldUser.getText());
         importer.setPassword(jPasswordFieldPassword.getText());
         importer.setPlatform(platformComboBox.getSelectedItem().toString());
-        importer.setCourse_id(textCourseId.getText());
+
     }
 
     public JPasswordField getjPasswordFieldPassword() {
@@ -248,14 +235,12 @@ public class MavselWizardSwing1 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JPasswordField jPasswordFieldPassword;
     private javax.swing.JSeparator jSeparator1;
-    private java.awt.Label labelCourseID;
     private java.awt.Label labelPassword;
     private java.awt.Label labelPassword2;
     private java.awt.Label labelPort;
     private java.awt.Label labelURL;
     private java.awt.Label labelUser;
     private javax.swing.JComboBox platformComboBox;
-    private java.awt.TextField textCourseId;
     private java.awt.TextField textFieldPort;
     private java.awt.TextField textFieldURL;
     private java.awt.TextField textFieldUser;
