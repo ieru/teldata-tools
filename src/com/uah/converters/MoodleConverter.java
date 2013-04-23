@@ -40,10 +40,11 @@ public class MoodleConverter {
     * @return 
     */
    public List<Course> getMoodleCourseItemFromCourseDTO(List<CourseMoodleDTO> coursesDTO){       
-        Course courseItem = new Course();   
+        Course courseItem;   
         List<Course> courses = new ArrayList<Course>();   
 
         for(CourseMoodleDTO courseDTO: coursesDTO){
+            courseItem = new Course();
             
             courseItem.setId(courseDTO.getId());
             courseItem.setFullname(courseDTO.getFullname());
@@ -198,12 +199,12 @@ public class MoodleConverter {
     * @return 
     */
    public List<PostRating> getMoodlePostRatingsFromPostRatingsDTO(List<PostRatingMoodleDTO> listPostRatingDTO){
-        PostRating postRatingItem;          
+        PostRating postRatingItem;        
         List<PostRating> postRatingsItems = new ArrayList<PostRating>();
 
         for(PostRatingMoodleDTO dto : listPostRatingDTO){ 
-            postRatingItem = getMoodlePostRatingFromPostRatingDTO(dto);
-                        
+            
+            postRatingItem = getMoodlePostRatingFromPostRatingDTO(dto);                        
             postRatingsItems.add(postRatingItem); 
         }
        

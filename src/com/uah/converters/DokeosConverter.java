@@ -26,7 +26,7 @@ public class DokeosConverter {
      * @param courseDTO
      * @return 
      */
-   public Course getDokeoseCourseItemFromCourseDTO(CourseDokeosDTO courseDTO){
+   public Course getDokeosCourseItemFromCourseDTO(CourseDokeosDTO courseDTO){
 
         Course courseItem = new Course();   
 
@@ -45,11 +45,12 @@ public class DokeosConverter {
     * @param coursesDTO
     * @return 
     */
-   public List<Course> getDokeoseCourseItemFromCourseDTO(List<CourseDokeosDTO> coursesDTO){       
-        Course courseItem = new Course();   
+   public List<Course> getDokeosCourseItemFromCourseDTO(List<CourseDokeosDTO> coursesDTO){       
+        Course courseItem;   
         List<Course> courses = new ArrayList<Course>();   
 
         for(CourseDokeosDTO courseDTO: coursesDTO){
+            courseItem = new Course(); 
             
             courseItem.setId(courseDTO.getCode());
             courseItem.setFullname(courseDTO.getTitle());

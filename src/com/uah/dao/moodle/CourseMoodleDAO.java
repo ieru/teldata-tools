@@ -2,6 +2,7 @@ package com.uah.dao.moodle;
 
 import com.uah.dao.DAO;
 import com.uah.dto.modle.CourseMoodleDTO;
+import com.uah.items.Course;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +42,7 @@ public class CourseMoodleDAO extends DAO{
                 course.setId(rs.getString("id"));
                 course.setFullname(rs.getString("fullname"));
                 course.setShortname(rs.getString("shortname"));
-                course.setSummary(rs.getString("summary"));               
+                course.setSummary(rs.getString("summary"));                                  
             }   else{
                 
                 return null;
@@ -56,11 +57,10 @@ public class CourseMoodleDAO extends DAO{
     
     /**
      * 
-     * @param idCourse
      * @return 
      */
     public List<CourseMoodleDTO> selectCourse(){
-        CourseMoodleDTO course = new CourseMoodleDTO();
+        CourseMoodleDTO course;
         List<CourseMoodleDTO> courses = new ArrayList<CourseMoodleDTO>();
         try {
             String sqlOrder = "SELECT id,fullname,shortname,summary FROM mdl_course";            
@@ -68,6 +68,7 @@ public class CourseMoodleDAO extends DAO{
             rs = statement.executeQuery( sqlOrder );
 
             while(rs.next()){
+                course = new CourseMoodleDTO();
                 course.setId(rs.getString("id"));
                 course.setFullname(rs.getString("fullname"));
                 course.setShortname(rs.getString("shortname"));

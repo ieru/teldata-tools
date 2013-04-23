@@ -117,7 +117,7 @@ public class DokeosLMS extends DataBaseManagement implements LMS {
         CourseDokeosDAO courseDAO = new CourseDokeosDAO(connection);
         CourseDokeosDTO courseDTO = courseDAO.selectCourse(id);
 
-        course = converter.getDokeoseCourseItemFromCourseDTO(courseDTO);
+        course = converter.getDokeosCourseItemFromCourseDTO(courseDTO);
 
         return course;
     }
@@ -131,7 +131,7 @@ public class DokeosLMS extends DataBaseManagement implements LMS {
         CourseDokeosDAO courseDAO = new CourseDokeosDAO(connection);
         List<CourseDokeosDTO> coursesDTO = courseDAO.selectCourse();
 
-        return converter.getDokeoseCourseItemFromCourseDTO(coursesDTO);
+        return converter.getDokeosCourseItemFromCourseDTO(coursesDTO);
     }
 
     /**
