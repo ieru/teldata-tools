@@ -124,7 +124,7 @@ public class MavselWizardUI implements ImporterWizardUI{
             e.printStackTrace();
         }
         
-        //panels = null;
+        panels = null;
     }
  
     @Override
